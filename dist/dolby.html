@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<style>html{background-color:#161310}html::before{content:"";position:fixed;inset:0;background:#161310;z-index:2147483600;pointer-events:none;transition:opacity .62s cubic-bezier(.22,1,.36,1)}html.pn-go::before{opacity:0}html.pn-none::before{display:none}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  body{ margin:0; }
+  a{ text-decoration:none; color:inherit; }
+  button{ font-family:inherit; }
+  .theme-root{ --bg:#161310; --surface:#1e1914; --surface-hi:#221d17; --surface-lo:#1b1712; --text:#efe7d9; --border:#34291f; --eyebrow:#b29c84; --muted1:#c5baa9; --muted2:#bcae9c; --muted3:#a89c8b; --muted4:#8f8475; --muted5:#938878; --label:#cfc4b2; --hover:#2a241d; transition:background .35s ease; }
+  .theme-root[data-theme="light"]{ --bg:#e2ddd2; --surface:#f6f1e9; --surface-hi:#fffdf9; --surface-lo:#faf7f0; --text:#211c16; --border:#e7ddca; --eyebrow:#a8927a; --muted1:#4a4238; --muted2:#544c41; --muted3:#6b6258; --muted4:#9a9081; --muted5:#a89e8d; --label:#3a342b; --hover:#f0e7d6; }
+  /* ---- responsive: collapse layout + scale display type as the frame narrows ---- */
+  @container (max-width: 980px){
+    .case-frame [style*="grid-template-columns: 0.42fr 1fr"]{ grid-template-columns:1fr !important; gap:18px !important; }
+    .case-frame [style*="grid-template-columns: 0.82fr 1fr"]{ grid-template-columns:1fr !important; gap:30px !important; }
+    .case-frame [style*="grid-template-columns: 1fr 0.62fr"]{ grid-template-columns:1fr !important; }
+    .case-frame [style*="repeat(4, 1fr)"]{ grid-template-columns:repeat(2,1fr) !important; }
+    .case-frame [style*="repeat(5, 1fr)"]{ grid-template-columns:repeat(2,1fr) !important; }
+  }
+  @container (max-width: 680px){
+    .case-frame [style*="px 48px"]{ padding-left:clamp(20px,5.4cqi,48px) !important; padding-right:clamp(20px,5.4cqi,48px) !important; }
+    .case-frame [style*="repeat(3, 1fr)"]{ grid-template-columns:1fr !important; }
+    .case-frame [style*="display: flex; gap: 24px"]{ flex-direction:column !important; }
+    .case-frame [style*="display: flex; gap: 28px"]{ flex-direction:column !important; }
+    .case-frame [style*="display: flex; gap: 64px"]{ flex-direction:column !important; gap:40px !important; align-items:center !important; }
+    .case-frame [style*="align-items: baseline; gap: 24px"]{ flex-direction:column !important; align-items:flex-start !important; gap:10px !important; }
+    .case-frame [style*="display: flex; gap: 20px"]{ flex-wrap:wrap !important; }
+    .case-frame [style*="display: flex; gap: 20px"] > div{ flex:1 1 calc(50% - 10px) !important; }
+    .case-frame [style*="padding: 46px 48px"]{ flex-direction:column !important; align-items:flex-start !important; gap:18px !important; }
+    .case-frame [style*="padding: 46px 48px"] [style*="text-align: right"]{ text-align:left !important; max-width:none !important; }
+    .case-frame h1{ font-size:clamp(34px,9.2cqi,92px) !important; line-height:1.03 !important; }
+    .case-frame h2{ font-size:clamp(27px,6.6cqi,44px) !important; line-height:1.14 !important; }
+    .case-frame [style*="font-size: 30px"]{ font-size:clamp(21px,5.4cqi,30px) !important; }
+    .case-frame [style*="font-size: 34px"]{ font-size:clamp(24px,5.8cqi,34px) !important; }
+    .case-frame [style*="font-size: 26px"]{ font-size:clamp(21px,5cqi,26px) !important; }
+    .case-frame [style*="font-size: 38px"]{ font-size:clamp(27px,6cqi,38px) !important; }
+    .case-frame [style*="font-size: 58px"]{ font-size:clamp(40px,10cqi,58px) !important; }
+    .case-frame [style*="font-size: 54px"]{ font-size:clamp(34px,8cqi,54px) !important; }
+    .case-frame [style*="font-size: 46px"]{ font-size:clamp(32px,7.5cqi,46px) !important; }
+    .case-frame [style*="font-size: 18px"]{ font-size:16px !important; }
+    .cf-backname{ display:none !important; }
+    .cf-backresume{ display:none !important; }
+    .cf-backallwork{ display:none !important; }
+    .cf-backhome{ display:flex !important; }
+    .case-burger{ display:flex !important; }
+  }
+  @container (max-width: 440px){
+    .case-frame [style*="repeat(4, 1fr)"], .case-frame [style*="repeat(5, 1fr)"]{ grid-template-columns:1fr !important; }
+  }
+</style>
+<script src="transitions.js"></script>
+</helmet>
+
+<div class="theme-root" data-theme="{{ theme }}" style="min-height:100vh; background:var(--bg); font-family:'Hanken Grotesk',sans-serif; display:flex; justify-content:center; align-items:flex-start; padding:clamp(0px,2.5vw,48px);">
+    <div class="case-frame" style="width:100%; max-width:1180px; container-type:inline-size; background:var(--surface); border-radius:clamp(0px,1.6vw,28px); box-shadow:0 1px 3px rgba(0,0,0,.18); overflow:hidden; color:var(--text);">
+
+      <!-- back bar -->
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:22px 48px; border-bottom:1px solid var(--border); font-size:14px;">
+        <a class="cf-backhome" href="index.html" style="display:none; align-items:center; gap:10px;"><img src="assets/favicon.png" alt="" style="width:30px; height:30px; display:block;"><span style="font-weight:700; font-size:16px;">Paula Narvaez</span></a>
+        <a class="cf-backallwork" href="index.html" style="display:flex; align-items:center; gap:8px; font-weight:600;">← All work</a>
+        <a class="cf-backname" href="index.html" style="font-weight:700;">Paula Narvaez</a>
+        <a class="cf-backresume" href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener" style="color:var(--muted2);">Résumé ↗</a>
+        <button class="case-burger" onClick="{{ toggleMenu }}" aria-label="Open menu" style="display:none; align-items:center; justify-content:center; width:40px; height:40px; margin:-8px -8px -8px 0; padding:0; background:none; border:none; cursor:pointer; color:var(--text);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6.5h18M3 12h18M3 17.5h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+        </button>
+      </div>
+
+      <!-- hero -->
+      <div style="padding:72px 48px 52px;">
+        <div style="font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:#cf5f97; margin-bottom:24px;">Case study · Dolby · Experiential + Product</div>
+        <h1 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(46px,8.4cqi,92px); line-height:0.98; letter-spacing:-.01em; margin:0 0 26px;">Live in Dolby</h1>
+        <p style="font-family: 'Instrument Serif',serif; font-style: normal; font-size: 30px; line-height: 1.32; color: var(--muted2); max-width: 760px; margin: 0">A live-music experience bridging virtual and real, fans and artists, connected through Dolby's best picture and sound.</p>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:48px; border-top:1px solid var(--border); padding-top:28px;">
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#cf5f97; margin-bottom:8px;">Role</div><div style="font-size:16px; line-height:1.4;">UX &amp; Experiential Designer</div></div>
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#cf5f97; margin-bottom:8px;">Timeline</div><div style="font-size:16px; line-height:1.4;">6 months</div></div>
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#cf5f97; margin-bottom:8px;">Focus</div><div style="font-size:16px; line-height:1.4;">Live stream + cross-platform app</div></div>
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#cf5f97; margin-bottom:8px;">Scope</div><div style="font-size:16px; line-height:1.4;">Physical set + digital product</div></div>
+        </div>
+      </div>
+
+      <!-- hero showcase (full-bleed, black) -->
+      <div style="background:#0a070a;">
+        <img src="assets/dolby/hero-banner.jpg" alt="Free Nationals — Live in Dolby, on web and mobile" style="width:100%; height:auto; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
+          <div style="font-size:15px; line-height:1.5; color:#a98aa0; max-width:760px;">The headline event: Grammy-nominated Free Nationals, streamed live in Dolby Vision &amp; Dolby Atmos, the same show, designed to feel native on every screen a fan might be watching from.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#7a5a6e; white-space:nowrap;">Live event · web + mobile</div>
+        </div>
+      </div>
+
+      <!-- NDA note -->
+      <div style="padding:54px 48px 0; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#cf5f97; padding-top:8px;">A note</div>
+        <div style="border-left:3px solid #cf5f97; padding-left:26px;">
+          <div style="font-family:'Instrument Serif',serif; font-size:26px; line-height:1.32; color:var(--text); margin-bottom:12px;">This work is under NDA.</div>
+          <div style="font-size:16px; line-height:1.6; color:var(--muted3);">I can't share everything I touched here. What follows is the public shape of the project, the problem, the approach, and the parts of the experience that shipped. Happy to walk through the rest in person.</div>
+        </div>
+      </div>
+
+      <!-- 01 the idea -->
+      <div style="padding:64px 48px 16px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#cf5f97; padding-top:8px;">01 — The idea</div>
+        <div>
+          <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;">The pandemic took live music away. We asked how technology could give the feeling back.</h2>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">With venues dark, people were starved for connection and community, the specific electricity of being in a room while something happens live. A recording wasn't it. A video call wasn't it. The brief was to find a third thing: a stream that felt like presence.</p>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">Dolby was the right place to attempt it. If anyone could make a screen feel like a room, it was the company whose whole reason to exist is fidelity of picture and sound.</p>
+        </div>
+      </div>
+      <div style="padding:36px 48px 64px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div></div>
+        <div style="border-left:3px solid #cf5f97; padding-left:26px;">
+          <div style="font-family:'Instrument Serif',serif; font-size:34px; line-height:1.2; color:var(--text);">How do we create a unique experience for fans and artists that blends the virtual and the real world?</div>
+          <div style="font-size:16px; color:var(--muted3); margin-top:12px;">The question we kept every decision honest against.</div>
+        </div>
+      </div>
+
+      <!-- 02 objectives (dark full-bleed, cross-platform) -->
+      <div style="background:#0e0710; color:#fff; padding:72px 48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#cf5f97; margin-bottom:14px;">02 — Objectives</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 14px; max-width:760px;">Expand Dolby's digital presence and show off both Dolby Vision and Dolby Atmos at once.</h2>
+        <p style="font-size:17px; line-height:1.6; color:#b08aa0; max-width:680px; margin:0 0 40px;">One experience had to live everywhere a fan already watched: living-room TV, phone, and the web. Same event, designed to feel native to each surface rather than ported onto it.</p>
+        <div style="border:1px solid #36202e; border-radius:18px; overflow:hidden; background:#0a070a;">
+          <img src="assets/dolby/banner-00.jpg" alt="The Live in Dolby experience across TV, mobile and web" style="width:100%; height:auto; display:block;">
+        </div>
+        <div style="font-size:13.5px; color:#7a5a6e; margin-top:18px;">One livestream, three native touchpoints (TV app, mobile app, and web), built from a single design language.</div>
+      </div>
+
+      <!-- 03 my role: physical + digital -->
+      <div style="padding:72px 48px 36px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#cf5f97; padding-top:8px;">03 — My role</div>
+        <div>
+          <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;">This was an interdisciplinary brief, so I worked across both the physical set and the digital product.</h2>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">On one side, the stage itself, thresholds, lighting, the spatial choreography of where a performance happens and how it reads on camera. On the other, the app a fan actually held: the watch screen, the chat, the join flow. Designing both meant the experience stayed coherent from the room all the way to the phone.</p>
+        </div>
+      </div>
+      <div style="padding:0 48px 16px; display:flex; gap:24px;">
+        <div style="flex:1;">
+          <div style="border-radius:18px; overflow:hidden; border:1px solid var(--hover); aspect-ratio:16/10; background:#0a070a;">
+            <img src="assets/dolby/hero-01.jpg" alt="Hand-drawn studies of the stage, thresholds and set" style="width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <div style="margin-top:14px;"><div style="font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:#cf5f97; margin-bottom:6px;">Physical</div><div style="font-size:15px; line-height:1.5; color:var(--muted3);">Set and staging studies, thresholds, light tubes, performance modules.</div></div>
+        </div>
+        <div style="flex:1;">
+          <div style="border-radius:18px; overflow:hidden; border:1px solid var(--hover); aspect-ratio:16/10; background:#0a070a;">
+            <img src="assets/dolby/hero-03.jpg" alt="Behind the scenes on the live stage" style="width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <div style="margin-top:14px;"><div style="font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:#cf5f97; margin-bottom:6px;">Built</div><div style="font-size:15px; line-height:1.5; color:var(--muted3);">The set realized, projection, lighting and live mix during the shoot.</div></div>
+        </div>
+      </div>
+
+      <!-- the live experience gallery (dark full-bleed) -->
+      <div style="background:#0e0710; color:#fff; padding:64px 48px; margin-top:56px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#cf5f97; margin-bottom:14px;">The experience, on a screen</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.1; margin:0 0 30px; max-width:720px;">Watch, react, vote, ask, buy, the live show became something you did, not just something you saw.</h2>
+        <div style="display:flex; flex-direction:column; gap:22px;">
+          <div style="border:1px solid #36202e; border-radius:18px; overflow:hidden; background:#0a070a;">
+            <img src="assets/dolby/hero-00.jpg" alt="The live player with real-time chat alongside" style="width:100%; height:auto; display:block;">
+          </div>
+          <div style="border:1px solid #36202e; border-radius:18px; overflow:hidden; background:#0a070a;">
+            <img src="assets/dolby/banner-03.jpg" alt="The player and Keepsake digital locker across tablet and phone" style="width:100%; height:auto; display:block;">
+          </div>
+          <div style="border:1px solid #36202e; border-radius:18px; overflow:hidden; background:#0a070a;">
+            <img src="assets/dolby/banner-01.jpg" alt="Mobile flows — live chat, artist bios, past shows and the watch screen" style="width:100%; height:auto; display:block;">
+          </div>
+        </div>
+        <div style="font-size:13.5px; color:#7a5a6e; margin-top:18px;">Live chat, voting and Q&amp;A running beside the stream · a Keepsake locker so the night didn't disappear when it ended · and the full mobile flow, from join to home.</div>
+      </div>
+
+      <!-- ticket accent (full-bleed black) -->
+      <div style="background:#0a070a; padding:56px 48px;">
+        <img src="assets/dolby/banner-04.jpg" alt="Free Nationals — concert streamed in Dolby Vision and Dolby Atmos" style="width:100%; height:auto; display:block; border-radius:14px;">
+        <div style="font-size:13.5px; color:#7a5a6e; margin-top:18px; text-align:center;">The through-line a ticket to a real event, that happened to live on every screen.</div>
+      </div>
+
+      <!-- outcome (dark) -->
+      <div style="background:#0e0710; color:#fff; padding:72px 48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#cf5f97; margin-bottom:14px;">04 — Outcome</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 24px; color:#fff; max-width:820px;">So did this actually happen? Yes, and it was awesome.</h2>
+        <p style="font-size:18px; line-height:1.62; color:#c9a9bc; max-width:720px; margin:0 0 40px;">We shipped a genuinely new way to approach live-streaming: high-fidelity picture and sound, an authentic feeling of connection between viewer and performer, and a real show people showed up for in the moment.</p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <span style="border:1px solid #4a2c3c; border-radius:100px; padding:9px 18px; font-size:14px; color:#e6c9d9;">Streamed live in Dolby Vision &amp; Atmos</span>
+          <span style="border:1px solid #4a2c3c; border-radius:100px; padding:9px 18px; font-size:14px; color:#e6c9d9;">One experience · TV, mobile &amp; web</span>
+          <span style="border:1px solid #4a2c3c; border-radius:100px; padding:9px 18px; font-size:14px; color:#e6c9d9;">Physical set + digital product</span>
+        </div>
+      </div>
+
+      <!-- reflection -->
+      <div style="padding:72px 48px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#cf5f97; padding-top:8px;">05 — Reflection</div>
+        <div>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 22px;">This is the project where I got to use all of myself, architecture brain, product instincts, a love of live experiences, on one problem. Designing the room and the app together taught me that an experience is only as good as its weakest surface, and that fidelity isn't a spec sheet; it's whether someone felt something.</p>
+          <div style="font-family:'Instrument Serif',serif; font-size:34px; line-height:1.25; color:var(--text);">The goal was never a better stream. It was a real moment, shared, and that's a design problem, not a hardware one.</div>
+        </div>
+      </div>
+
+      <!-- next -->
+      <a href="three-dot.html" style="display:flex; justify-content:space-between; align-items:center; background:#d2603f; color:#fff; padding:46px 48px;">
+        <div>
+          <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; opacity:.85; margin-bottom:8px;">Next case study</div>
+          <div style="font-family:'Instrument Serif',serif; font-size:38px;">3-Dot Menu Simplification →</div>
+        </div>
+        <div style="font-size:14px; opacity:.9; max-width:260px; text-align:right;">Shipped a feature stall for four years to 3B+ users, in 4 months.</div>
+      </a>
+
+      <div style="background:#100d0a; color:#f0e9dd; padding:40px 48px; display:flex; justify-content:space-between; align-items:center; font-size:14px;">
+        <span style="color:#bdb2a2;">© 2026 Paula Narvaez :)</span>
+        <span style="display:flex; gap:22px; color:#d8cdb8;"><a href="https://www.linkedin.com/in/paulanarvaez/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:paula.narv@gmail.com">Email</a><span>@paulanarv</span></span>
+      </div>
+    </div>
+
+  <!-- mobile menu overlay -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:clamp(0px,2.5vw,48px); z-index:300; border-radius:clamp(0px,1.6vw,28px); background:var(--bg); color:var(--text); container-type:inline-size; overflow:hidden; display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:22px clamp(20px,5.4cqi,48px);">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <img src="assets/favicon.png" alt="" style="width:30px; height:30px; display:block;">
+          <div style="font-weight:700; font-size:16px;">Paula Narvaez</div>
+        </div>
+        <button onClick="{{ closeMenu }}" aria-label="Close menu" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; margin:-8px -8px -8px 0; padding:0; background:none; border:none; cursor:pointer; color:var(--text);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+        </button>
+      </div>
+      <nav style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(4px,1.4vh,12px); padding:0 clamp(20px,5.4cqi,48px) clamp(40px,10vh,90px);">
+        <a href="index.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--text);">Work</a>
+        <a href="play.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">Play</a>
+        <a href="about.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">About</a>
+        <a href="contact.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">Contact</a>
+        <a href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener" onClick="{{ closeMenu }}" style="font-size:17px; letter-spacing:.04em; text-transform:uppercase; color:var(--muted4); font-weight:600; margin-top:22px;">Résumé ↗</a>
+      </nav>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { theme: 'dark', menuOpen: false };
+  componentDidMount(){ try{ var t = localStorage.getItem('pn-theme-case'); if (t === 'light' || t === 'dark') this.setState({ theme: t }); }catch(e){} }
+  renderVals(){ return { theme: this.state.theme, menuOpen: this.state.menuOpen, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }) }; }
+}
+</script>
+</body>
+</html>

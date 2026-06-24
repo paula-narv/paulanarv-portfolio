@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<style>html{background-color:#161310}html::before{content:"";position:fixed;inset:0;background:#161310;z-index:2147483600;pointer-events:none;transition:opacity .62s cubic-bezier(.22,1,.36,1)}html.pn-go::before{opacity:0}html.pn-none::before{display:none}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  body{ margin:0; }
+  a{ text-decoration:none; color:inherit; }
+  button{ font-family:inherit; }
+  /* ---- theme tokens (dark = default for project pages) ---- */
+  .theme-root{ --bg:#161310; --surface:#1e1914; --surface-hi:#221d17; --surface-lo:#1b1712; --text:#efe7d9; --border:#34291f; --eyebrow:#b29c84; --muted1:#c5baa9; --muted2:#bcae9c; --muted3:#a89c8b; --muted4:#8f8475; --muted5:#938878; --label:#cfc4b2; --hover:#2a241d; transition:background .35s ease; }
+  .theme-root[data-theme="light"]{ --bg:#e2ddd2; --surface:#f6f1e9; --surface-hi:#fffdf9; --surface-lo:#faf7f0; --text:#211c16; --border:#e7ddca; --eyebrow:#a8927a; --muted1:#4a4238; --muted2:#544c41; --muted3:#6b6258; --muted4:#9a9081; --muted5:#a89e8d; --label:#3a342b; --hover:#f0e7d6; }
+  .seg{ transition:background .2s ease, color .2s ease; }
+  .theme-root:not([data-theme="light"]) .seg-dark{ background:var(--text); color:var(--bg); }
+  .theme-root[data-theme="light"] .seg-light{ background:var(--text); color:var(--bg); }
+  /* ---- responsive: collapse layout + scale display type as the frame narrows ---- */
+  @container (max-width: 980px){
+    .case-frame [style*="grid-template-columns: 0.42fr 1fr"]{ grid-template-columns:1fr !important; gap:18px !important; }
+    .case-frame [style*="grid-template-columns: 0.82fr 1fr"]{ grid-template-columns:1fr !important; gap:30px !important; }
+    .case-frame [style*="grid-template-columns: 1fr 0.62fr"]{ grid-template-columns:1fr !important; }
+    .case-frame [style*="repeat(4, 1fr)"]{ grid-template-columns:repeat(2,1fr) !important; }
+    .case-frame [style*="repeat(5, 1fr)"]{ grid-template-columns:repeat(2,1fr) !important; }
+  }
+  @container (max-width: 680px){
+    .case-frame [style*="px 48px"]{ padding-left:clamp(20px,5.4cqi,48px) !important; padding-right:clamp(20px,5.4cqi,48px) !important; }
+    .case-frame [style*="repeat(3, 1fr)"]{ grid-template-columns:1fr !important; }
+    .case-frame [style*="display: flex; gap: 24px"]{ flex-direction:column !important; }
+    .case-frame [style*="display: flex; gap: 28px"]{ flex-direction:column !important; }
+    .case-frame [style*="display: flex; gap: 64px"]{ flex-direction:column !important; gap:40px !important; align-items:center !important; }
+    .case-frame [style*="align-items: baseline; gap: 24px"]{ flex-direction:column !important; align-items:flex-start !important; gap:10px !important; }
+    .case-frame [style*="display: flex; gap: 20px"]{ flex-wrap:wrap !important; }
+    .case-frame [style*="display: flex; gap: 20px"] > div{ flex:1 1 calc(50% - 10px) !important; }
+    .case-frame [style*="padding: 46px 48px"]{ flex-direction:column !important; align-items:flex-start !important; gap:18px !important; }
+    .case-frame [style*="padding: 46px 48px"] [style*="text-align: right"]{ text-align:left !important; max-width:none !important; }
+    .case-frame h1{ font-size:clamp(34px,9.2cqi,92px) !important; line-height:1.03 !important; }
+    .case-frame h2{ font-size:clamp(27px,6.6cqi,44px) !important; line-height:1.14 !important; }
+    .case-frame [style*="font-size: 30px"]{ font-size:clamp(21px,5.4cqi,30px) !important; }
+    .case-frame [style*="font-size: 34px"]{ font-size:clamp(24px,5.8cqi,34px) !important; }
+    .case-frame [style*="font-size: 26px"]{ font-size:clamp(21px,5cqi,26px) !important; }
+    .case-frame [style*="font-size: 38px"]{ font-size:clamp(27px,6cqi,38px) !important; }
+    .case-frame [style*="font-size: 58px"]{ font-size:clamp(40px,10cqi,58px) !important; }
+    .case-frame [style*="font-size: 54px"]{ font-size:clamp(34px,8cqi,54px) !important; }
+    .case-frame [style*="font-size: 46px"]{ font-size:clamp(32px,7.5cqi,46px) !important; }
+    .case-frame [style*="font-size: 18px"]{ font-size:16px !important; }
+    .cf-backname{ display:none !important; }
+    .cf-backresume{ display:none !important; }
+    .cf-backallwork{ display:none !important; }
+    .cf-backhome{ display:flex !important; }
+    .case-burger{ display:flex !important; }
+  }
+  @container (max-width: 440px){
+    .case-frame [style*="repeat(4, 1fr)"], .case-frame [style*="repeat(5, 1fr)"]{ grid-template-columns:1fr !important; }
+  }
+</style>
+<script src="transitions.js"></script>
+</helmet>
+
+<div class="theme-root" data-theme="dark" style="min-height:100vh; background:var(--bg); font-family:'Hanken Grotesk',sans-serif; display:flex; justify-content:center; align-items:flex-start; padding:clamp(0px,2.5vw,48px);">
+    <div class="case-frame" style="width:100%; max-width:1180px; container-type:inline-size; background:var(--surface); border-radius:clamp(0px,1.6vw,28px); box-shadow:0 1px 3px rgba(0,0,0,.18); overflow:hidden; color:var(--text);">
+      <!-- back bar -->
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:22px 48px; border-bottom:1px solid var(--border); font-size:14px;">
+        <a class="cf-backhome" href="index.html" style="display:none; align-items:center; gap:10px;"><img src="assets/favicon.png" alt="" style="width:30px; height:30px; display:block;"><span style="font-weight:700; font-size:16px;">Paula Narvaez</span></a>
+        <a class="cf-backallwork" href="index.html" style="display:flex; align-items:center; gap:8px; font-weight:600;">← All work</a>
+        <a class="cf-backname" href="index.html" style="font-weight:700;">Paula Narvaez</a>
+        <a class="cf-backresume" href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener" style="color:var(--muted2);">Résumé ↗</a>
+        <button class="case-burger" onClick="{{ toggleMenu }}" aria-label="Open menu" style="display:none; align-items:center; justify-content:center; width:40px; height:40px; margin:-8px -8px -8px 0; padding:0; background:none; border:none; cursor:pointer; color:var(--text);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6.5h18M3 12h18M3 17.5h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+        </button>
+      </div>
+
+      <!-- hero -->
+      <div style="padding:72px 48px 52px;">
+        <div style="font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:#d2603f; margin-bottom:24px;">Case study · Facebook · Settings &amp; Controls</div>
+        <h1 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(46px,8.4cqi,92px); line-height:0.98; letter-spacing:-.01em; margin:0 0 26px;">3-Dot Menu Simplification</h1>
+        <p style="font-family: 'Instrument Serif',serif; font-style: normal; font-size: 30px; line-height: 1.32; color: var(--muted2); max-width: 780px; margin: 0">Stalled for four years. Shipped in 4 months.</p>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:48px; border-top:1px solid var(--border); padding-top:28px;">
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#d2603f; margin-bottom:8px;">Role</div><div style="font-size:16px; line-height:1.4;">Senior Product Designer (Lead)</div></div>
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#d2603f; margin-bottom:8px;">Timeline</div><div style="font-size:16px; line-height:1.4;">2025–2026 · 4 months</div></div>
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#d2603f; margin-bottom:8px;">Team</div><div style="font-size:16px; line-height:1.4;">Facebook · 10+ XFN teams</div></div>
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#d2603f; margin-bottom:8px;">Tools</div><div style="font-size:16px; line-height:1.4;">Figma, Origami, Cursor</div></div>
+        </div>
+      </div>
+
+      <!-- hero showcase mock (full-bleed) -->
+      <div style="background:#0d1b2a;">
+        <img src="assets/3dot-options.jpg" alt="Short-term, mid-term, and north-star versions of the menu" style="width:100%; height:auto; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
+          <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">Short-term, mid-term, and the north star, one evolution, sequenced so it could actually ship to 3 billion people without breaking a single habit.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">3-dot menu · roadmap</div>
+        </div>
+      </div>
+
+      <!-- impact strip (dark) -->
+      <div style="background:#0a1622; color:#fff; padding:54px 48px;">
+        <div style="font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#5b6b7e; margin-bottom:30px;">Impact</div>
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:24px;">
+          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">3B+</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">Users reached</div></div>
+          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">14→~4+</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">Controls simplified</div></div>
+          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">4 mo</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">Idea to ship</div></div>
+          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">1:1</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">Shipped as designed</div></div>
+          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">10+</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">XFN teams aligned</div></div>
+        </div>
+      </div>
+
+      <!-- 01 the problem -->
+      <div style="padding:72px 48px 16px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#d2603f; padding-top:8px;">01 — The problem</div>
+        <div>
+          <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;">Fourteen controls in one menu, and four years of failed attempts to fix it.</h2>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">The 3-dot menu is how people control their own Facebook experience: what they see, save, hide, or report. Over time it became a junk drawer. Every team that touched Feed added a control and no one would give theirs up, so it grew to roughly 14 options: redundant, inconsistent across surfaces, none prioritized. UXR was blunt, 44% of the words people used to describe it were negative: confusing, overwhelming, pushy.</p>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">It wasn't cosmetic. Decision fatigue meant people disengaged from the controls entirely, the noise hurt ranking signals, and competitors like LinkedIn, X, Threads, and Instagram had already moved toward fewer, clearer controls. Three separate efforts had tried to fix it and stalled, not on design, but on alignment.</p>
+        </div>
+      </div>
+      <div style="padding:36px 48px 64px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div></div>
+        <div style="border-left:3px solid #d2603f; padding-left:26px;">
+          <div style="font-family:'Instrument Serif',serif; font-size:58px; line-height:1; color:var(--text);">14 in 1</div>
+          <div style="font-size:16px; color:var(--muted3); margin-top:10px;">controls crammed into a single menu when I picked the project up.</div>
+        </div>
+      </div>
+
+      <!-- 02 exploration -->
+      <div style="padding:0 48px 40px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#d2603f; padding-top:8px;">02 — Exploration</div>
+        <div>
+          <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;">I started with a pitch, not a prototype.</h2>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">Before a pixel moved, I framed two strategic options for leadership, incremental cleanup versus a bold new model, with honest tradeoffs and a clear recommendation: the bold path, despite the risk. That pitch set four design principles that guided every decision after it:</p>
+          <ul style="list-style:none; margin:0 0 18px; padding:0; display:grid; gap:10px;">
+            <li style="display:flex; gap:12px; align-items:baseline; font-size:18px; line-height:1.5; color:var(--muted1);"><span style="flex:none; width:7px; height:7px; border-radius:50%; background:#d2603f; transform:translateY(-3px);"></span>Surface essential controls</li>
+            <li style="display:flex; gap:12px; align-items:baseline; font-size:18px; line-height:1.5; color:var(--muted1);"><span style="flex:none; width:7px; height:7px; border-radius:50%; background:#d2603f; transform:translateY(-3px);"></span>No duplication</li>
+            <li style="display:flex; gap:12px; align-items:baseline; font-size:18px; line-height:1.5; color:var(--muted1);"><span style="flex:none; width:7px; height:7px; border-radius:50%; background:#d2603f; transform:translateY(-3px);"></span>Progressive disclosure</li>
+            <li style="display:flex; gap:12px; align-items:baseline; font-size:18px; line-height:1.5; color:var(--muted1);"><span style="flex:none; width:7px; height:7px; border-radius:50%; background:#d2603f; transform:translateY(-3px);"></span>Modern and YA-ready</li>
+          </ul>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">Then I led with data, not design. With my tech lead, I built risk assessments, impact analyses, and ranking-signal projections, and showed each team exactly how the change would move their numbers. Not “this is cleaner for users,” but “here is what this means for your signals.”</p>
+        </div>
+      </div>
+      <div style="background:#0d1b2a;">
+        <img src="assets/3dot-pitch-options.jpg" alt="Incremental versus radical simplification options compared" style="width:100%; height:auto; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
+          <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">The two directions, side by side, with the trade-offs named. Radical was recommended, and aligned on.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">Options · decision artifact</div>
+        </div>
+      </div>
+
+      <!-- 03 the north star -->
+      <div style="background:#0a1622; color:#fff; padding:72px 48px 64px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">03 — The north star</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 14px; max-width:760px;">Every control mapped to a job, and a tier.</h2>
+        <p style="font-size:17px; line-height:1.6; color:#94a1b2; max-width:680px; margin:0 0 40px;">Every control faced three questions: is it legally required, is it actually used (last 30 days of click-through), and does it have a better home elsewhere? What survived was clear: Interested / Not Interested, Save, Why Am I Seeing This, and Report. Nothing else was deleted, it was rehomed, mapped on a control matrix so nothing vanished without another entry point.</p>
+        <div style="border:1px solid #22364a; border-radius:18px; overflow:hidden; background:#0a1622;">
+          <img src="assets/3dot-metaai.jpg" alt="North-star menu annotated with structure and elements" style="width:100%; height:auto; display:block;">
+        </div>
+      </div>
+
+      <!-- motion reel (placeholder) -->
+      <div style="padding:72px 48px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px;">
+          <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#d2603f;">See it in motion</div>
+        </div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 36px; max-width:720px;">The before, the after, and the moment it clicks.</h2>
+        <div style="display:flex; gap:64px; justify-content:center;">
+          <div style="flex:0 0 260px; text-align:center;">
+            <div style="border-radius:20px; overflow:hidden; border:1px solid var(--hover); background:#0a0805; display:flex; align-items:center; justify-content:center; width:260px;">
+              <video src="assets/3dot-old-menu.mp4" autoplay="" muted="" loop="" playsinline="" style="display:block; width:100%; max-height:582px; object-fit:contain;"></video>
+            </div>
+            <div style="margin-top:18px;">
+              <div style="font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:#d2603f; margin-bottom:7px;">01 · Before</div>
+              <div style="font-family:'Instrument Serif',serif; font-size:24px; line-height:1.08; margin-bottom:7px;">Fourteen controls deep</div>
+              <div style="font-size:14px; line-height:1.5; color:var(--muted3);">The old menu, every control crammed into one scrolling list.</div>
+            </div>
+          </div>
+          <div style="flex:0 0 260px; text-align:center;">
+            <div style="border-radius:20px; overflow:hidden; border:1px solid var(--hover); background:#0a0805; display:flex; align-items:center; justify-content:center; width:260px;">
+              <video src="assets/3dot-before-after.mp4" autoplay="" muted="" loop="" playsinline="" style="display:block; width:100%; max-height:582px; object-fit:contain;"></video>
+            </div>
+            <div style="margin-top:18px;">
+              <div style="font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:#d2603f; margin-bottom:7px;">02 · After</div>
+              <div style="font-family:'Instrument Serif',serif; font-size:24px; line-height:1.08; margin-bottom:7px;">Fourteen collapse into four</div>
+              <div style="font-size:14px; line-height:1.5; color:var(--muted3);">The simplified set that shipped: four core controls, nothing essential lost.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- screen stills gallery (placeholder) -->
+      <div style="padding:72px 48px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:30px;">
+          <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#d2603f;">More states</div>
+        </div>
+        <div style="display:flex; gap:20px;">
+          <div style="flex:1;">
+            <div style="aspect-ratio:9/19.5; border-radius:18px; overflow:hidden; border:1px solid var(--hover); background:#0a0805;"><img src="assets/3dot-state-collapsed.png" alt="Collapsed menu" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top;"></div>
+            <div style="font-size:13px; color:var(--muted3); margin-top:12px; text-align:center;">Collapsed menu</div>
+          </div>
+          <div style="flex:1;">
+            <div style="aspect-ratio:9/19.5; border-radius:18px; overflow:hidden; border:1px solid var(--hover); background:#0a0805;"><img src="assets/3dot-state-secondary.png" alt="Secondary controls" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top;"></div>
+            <div style="font-size:13px; color:var(--muted3); margin-top:12px; text-align:center;">Secondary controls</div>
+          </div>
+          <div style="flex:1;">
+            <div style="aspect-ratio:9/19.5; border-radius:18px; overflow:hidden; border:1px solid var(--hover); background:#0a0805;"><img src="assets/3dot-state-discovery.png" alt="Discovery layer" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top;"></div>
+            <div style="font-size:13px; color:var(--muted3); margin-top:12px; text-align:center;">Discovery layer</div>
+          </div>
+          <div style="flex:1;">
+            <div style="aspect-ratio:9/19.5; border-radius:18px; overflow:hidden; border:1px solid var(--hover); background:#0a0805;"><img src="assets/3dot-state-report.png" alt="Report confirmation" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top;"></div>
+            <div style="font-size:13px; color:var(--muted3); margin-top:12px; text-align:center;">Report confirmation</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 the curveball -->
+      <div style="padding:72px 48px 48px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#d2603f; padding-top:8px;">04 — The curveball</div>
+        <div>
+          <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;">Then Meta AI entered the chat.</h2>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">Mid-process, a new ask came down from the very top: Meta AI needed to live in the 3-dot menu, a direct request from Mark Zuckerberg. It was the opposite of everything I'd been fighting for, more surface, more complexity, more negotiation. So I had a choice: push back and lose, or adapt without giving up the core goals.</p>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">I adapted. I co-designed an AI Discovery Layer with a Discovery designer, a Meta AI summary, account transparency, a one-tap prompt entry, and ranked media actions, working closely with the Discovery, Feed, and Search teams to fit it in without unwinding the consolidation. On the UI I held the line: icon consistency, color-token alignment, secondary strings cut, only primary labels kept. What launched wasn't far from what I first pitched.</p>
+          <div style="display:flex; gap:28px; align-items:flex-start; margin-top:32px;">
+            <div style="flex:0 0 260px;">
+              <div style="border-radius:20px; overflow:hidden; border:1px solid var(--hover); background:#0a0805; display:flex; align-items:center; justify-content:center; width:260px;">
+                <video src="assets/3dot-ai-discovery.mp4" autoplay="" muted="" loop="" playsinline="" style="display:block; width:100%; max-height:582px; object-fit:contain;"></video>
+              </div>
+            </div>
+            <div style="flex:1; padding-top:6px;">
+              <div style="font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:#d2603f; margin-bottom:7px;">The Meta AI layer</div>
+              <div style="font-family:'Instrument Serif',serif; font-size:24px; line-height:1.12; margin-bottom:10px;">Discovery, without unwinding the work.</div>
+              <div style="font-size:15px; line-height:1.55; color:var(--muted3); max-width:360px;">A generated summary and sourced links, opening from the top of the menu, added as a net-new surface while the four core controls stayed intact.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 outcome (dark) -->
+      <div style="background:#0a1622; color:#fff; padding:72px 48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">05 — Outcome</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 44px; color:#fff;">Shipped, at the scale that scared everyone.</h2>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:40px; border-top:1px solid #22364a; padding-top:40px;">
+          <div><div style="font-size:54px; font-weight:800; letter-spacing:-.02em;">14→4</div><div style="font-size:14px; color:#94a1b2; margin-top:10px;">Controls, with nothing essential lost</div></div>
+          <div><div style="font-size:54px; font-weight:800; letter-spacing:-.02em;">4 months</div><div style="font-size:14px; color:#94a1b2; margin-top:10px;">From stalled initiative to global ship</div></div>
+          <div><div style="font-size:54px; font-weight:800; letter-spacing:-.02em;">3B+</div><div style="font-size:14px; color:#94a1b2; margin-top:10px;">People on the new menu</div></div>
+        </div>
+        <div style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap;">
+          <span style="border:1px solid #2c4258; border-radius:100px; padding:9px 18px; font-size:14px; color:#cdd7e2;">Shipped 1:1 with the spec</span>
+          <span style="border:1px solid #2c4258; border-radius:100px; padding:9px 18px; font-size:14px; color:#cdd7e2;">10+ XFN teams aligned</span>
+          <span style="border:1px solid #2c4258; border-radius:100px; padding:9px 18px; font-size:14px; color:#cdd7e2;">Meta AI discovery, net-new surface</span>
+        </div>
+      </div>
+
+      <!-- reflection -->
+      <div style="padding:72px 48px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#d2603f; padding-top:8px;">06 — Reflection</div>
+        <div>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 22px;">The design was never the hard part, three teams had already proven a cleaner menu was possible. The unlock wasn't a design decision; it was changing the conversation, from design rationale to data, risk, and business impact, and building the artifact that made the bold version feel like the safe one. Working alongside my engineering partner was the most meaningful collaboration of my time at Meta: two people moving something an entire org couldn't for four years.</p>
+          <div style="font-family:'Instrument Serif',serif; font-size:34px; line-height:1.25; color:var(--text);">Alignment is a design problem. I just happened to redraw a menu along the way.</div>
+        </div>
+      </div>
+
+      <!-- next -->
+      <a href="blueprint.html" style="display:flex; justify-content:space-between; align-items:center; background:#4a59c4; color:#fff; padding:46px 48px;">
+        <div>
+          <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; opacity:.85; margin-bottom:8px;">Next case study</div>
+          <div style="font-family:'Instrument Serif',serif; font-size:38px;">Blueprint Design System →</div>
+        </div>
+        <div style="font-size:14px; opacity:.9; max-width:260px; text-align:right;">100+ specs, a 6-step methodology, 10→95% quality-check pass rate.</div>
+      </a>
+
+      <div style="background:#100d0a; color:#f0e9dd; padding:40px 48px; display:flex; justify-content:space-between; align-items:center; font-size:14px;">
+        <span style="color:#bdb2a2;">© 2026 Paula Narvaez :)</span>
+        <span style="display:flex; gap:22px; color:#d8cdb8;"><a href="https://www.linkedin.com/in/paulanarvaez/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:paula.narv@gmail.com">Email</a><span>@paulanarv</span></span>
+      </div>
+    </div>
+
+  <!-- mobile menu overlay -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:clamp(0px,2.5vw,48px); z-index:300; border-radius:clamp(0px,1.6vw,28px); background:var(--bg); color:var(--text); container-type:inline-size; overflow:hidden; display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:22px clamp(20px,5.4cqi,48px);">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <img src="assets/favicon.png" alt="" style="width:30px; height:30px; display:block;">
+          <div style="font-weight:700; font-size:16px;">Paula Narvaez</div>
+        </div>
+        <button onClick="{{ closeMenu }}" aria-label="Close menu" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; margin:-8px -8px -8px 0; padding:0; background:none; border:none; cursor:pointer; color:var(--text);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+        </button>
+      </div>
+      <nav style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(4px,1.4vh,12px); padding:0 clamp(20px,5.4cqi,48px) clamp(40px,10vh,90px);">
+        <a href="index.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--text);">Work</a>
+        <a href="play.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">Play</a>
+        <a href="about.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">About</a>
+        <a href="contact.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">Contact</a>
+        <a href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener" onClick="{{ closeMenu }}" style="font-size:17px; letter-spacing:.04em; text-transform:uppercase; color:var(--muted4); font-weight:600; margin-top:22px;">Résumé ↗</a>
+      </nav>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { theme: 'dark', menuOpen: false };
+  componentDidMount(){
+    try{ var t = localStorage.getItem('pn-theme-case'); if (t === 'light' || t === 'dark') this.setState({ theme: t }); }catch(e){}
+    this._playVids();
+    setTimeout(() => this._playVids(), 400);
+    this._vidKick = () => this._playVids();
+    window.addEventListener('pointerdown', this._vidKick);
+  }
+  componentWillUnmount(){ if (this._vidKick) window.removeEventListener('pointerdown', this._vidKick); }
+  componentDidUpdate(){ this._playVids(); }
+  _playVids(){ try{ document.querySelectorAll('video').forEach((v) => { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = true; v.setAttribute('muted',''); v.setAttribute('playsinline',''); var p = v.play(); if (p && p.catch) p.catch(() => {}); }); }catch(e){} }
+  setTheme(t){ this.setState({ theme: t }); try{ localStorage.setItem('pn-theme-case', t); }catch(e){} }
+  renderVals(){ return { theme: this.state.theme, setLight: () => this.setTheme('light'), setDark: () => this.setTheme('dark'), menuOpen: this.state.menuOpen, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }) }; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<style>html{background-color:#161310}html::before{content:"";position:fixed;inset:0;background:#161310;z-index:2147483600;pointer-events:none;transition:opacity .62s cubic-bezier(.22,1,.36,1)}html.pn-go::before{opacity:0}html.pn-none::before{display:none}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  body{ margin:0; }
+  a{ text-decoration:none; color:inherit; }
+  button{ font-family:inherit; }
+  .theme-root{ --bg:#161310; --surface:#1e1914; --surface-hi:#221d17; --surface-lo:#1b1712; --text:#efe7d9; --border:#34291f; --eyebrow:#b29c84; --muted1:#c5baa9; --muted2:#bcae9c; --muted3:#a89c8b; --muted4:#8f8475; --muted5:#938878; --label:#cfc4b2; --hover:#2a241d; transition:background .35s ease; }
+  .theme-root[data-theme="light"]{ --bg:#e2ddd2; --surface:#f6f1e9; --surface-hi:#fffdf9; --surface-lo:#faf7f0; --text:#211c16; --border:#e7ddca; --eyebrow:#a8927a; --muted1:#4a4238; --muted2:#544c41; --muted3:#6b6258; --muted4:#9a9081; --muted5:#a89e8d; --label:#3a342b; --hover:#f0e7d6; }
+  /* ---- responsive: collapse layout + scale display type as the frame narrows ---- */
+  @container (max-width: 980px){
+    .case-frame [style*="grid-template-columns: 0.42fr 1fr"]{ grid-template-columns:1fr !important; gap:18px !important; }
+    .case-frame [style*="grid-template-columns: 0.82fr 1fr"]{ grid-template-columns:1fr !important; gap:30px !important; }
+    .case-frame [style*="grid-template-columns: 1fr 0.62fr"]{ grid-template-columns:1fr !important; }
+    .case-frame [style*="repeat(4, 1fr)"]{ grid-template-columns:repeat(2,1fr) !important; }
+    .case-frame [style*="repeat(5, 1fr)"]{ grid-template-columns:repeat(2,1fr) !important; }
+  }
+  @container (max-width: 680px){
+    .case-frame [style*="px 48px"]{ padding-left:clamp(20px,5.4cqi,48px) !important; padding-right:clamp(20px,5.4cqi,48px) !important; }
+    .case-frame [style*="repeat(3, 1fr)"]{ grid-template-columns:1fr !important; }
+    .case-frame [style*="display: flex; gap: 24px"]{ flex-direction:column !important; }
+    .case-frame [style*="display: flex; gap: 28px"]{ flex-direction:column !important; }
+    .case-frame [style*="display: flex; gap: 64px"]{ flex-direction:column !important; gap:40px !important; align-items:center !important; }
+    .case-frame [style*="align-items: baseline; gap: 24px"]{ flex-direction:column !important; align-items:flex-start !important; gap:10px !important; }
+    .case-frame [style*="display: flex; gap: 20px"]{ flex-wrap:wrap !important; }
+    .case-frame [style*="display: flex; gap: 20px"] > div{ flex:1 1 calc(50% - 10px) !important; }
+    .case-frame [style*="padding: 46px 48px"]{ flex-direction:column !important; align-items:flex-start !important; gap:18px !important; }
+    .case-frame [style*="padding: 46px 48px"] [style*="text-align: right"]{ text-align:left !important; max-width:none !important; }
+    .case-frame h1{ font-size:clamp(34px,9.2cqi,92px) !important; line-height:1.03 !important; }
+    .case-frame h2{ font-size:clamp(27px,6.6cqi,44px) !important; line-height:1.14 !important; }
+    .case-frame [style*="font-size: 30px"]{ font-size:clamp(21px,5.4cqi,30px) !important; }
+    .case-frame [style*="font-size: 34px"]{ font-size:clamp(24px,5.8cqi,34px) !important; }
+    .case-frame [style*="font-size: 26px"]{ font-size:clamp(21px,5cqi,26px) !important; }
+    .case-frame [style*="font-size: 38px"]{ font-size:clamp(27px,6cqi,38px) !important; }
+    .case-frame [style*="font-size: 58px"]{ font-size:clamp(40px,10cqi,58px) !important; }
+    .case-frame [style*="font-size: 54px"]{ font-size:clamp(34px,8cqi,54px) !important; }
+    .case-frame [style*="font-size: 46px"]{ font-size:clamp(32px,7.5cqi,46px) !important; }
+    .case-frame [style*="font-size: 18px"]{ font-size:16px !important; }
+    .cf-backname{ display:none !important; }
+    .cf-backresume{ display:none !important; }
+    .cf-backallwork{ display:none !important; }
+    .cf-backhome{ display:flex !important; }
+    .case-burger{ display:flex !important; }
+  }
+  @container (max-width: 440px){
+    .case-frame [style*="repeat(4, 1fr)"], .case-frame [style*="repeat(5, 1fr)"]{ grid-template-columns:1fr !important; }
+  }
+</style>
+<script src="transitions.js"></script>
+</helmet>
+
+<div class="theme-root" data-theme="{{ theme }}" style="min-height:100vh; background:var(--bg); font-family:'Hanken Grotesk',sans-serif; display:flex; justify-content:center; align-items:flex-start; padding:clamp(0px,2.5vw,48px);">
+    <div class="case-frame" style="width:100%; max-width:1180px; container-type:inline-size; background:var(--surface); border-radius:clamp(0px,1.6vw,28px); box-shadow:0 1px 3px rgba(0,0,0,.18); overflow:hidden; color:var(--text);">
+
+      <!-- back bar -->
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:22px 48px; border-bottom:1px solid var(--border); font-size:14px;">
+        <a class="cf-backhome" href="index.html" style="display:none; align-items:center; gap:10px;"><img src="assets/favicon.png" alt="" style="width:30px; height:30px; display:block;"><span style="font-weight:700; font-size:16px;">Paula Narvaez</span></a>
+        <a class="cf-backallwork" href="index.html" style="display:flex; align-items:center; gap:8px; font-weight:600;">← All work</a>
+        <a class="cf-backname" href="index.html" style="font-weight:700;">Paula Narvaez</a>
+        <a class="cf-backresume" href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener" style="color:var(--muted2);">Résumé ↗</a>
+        <button class="case-burger" onClick="{{ toggleMenu }}" aria-label="Open menu" style="display:none; align-items:center; justify-content:center; width:40px; height:40px; margin:-8px -8px -8px 0; padding:0; background:none; border:none; cursor:pointer; color:var(--text);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6.5h18M3 12h18M3 17.5h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+        </button>
+      </div>
+
+      <!-- hero -->
+      <div style="padding:72px 48px 52px;">
+        <div style="font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:#4fa877; margin-bottom:24px;">Case study · Google · Nest Renew</div>
+        <h1 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(46px,8.4cqi,92px); line-height:0.98; letter-spacing:-.01em; margin:0 0 26px;">Nest Renew: Emails</h1>
+        <p style="font-family: 'Instrument Serif',serif; font-style: normal; font-size: 30px; line-height: 1.32; color: var(--muted2); max-width: 760px; margin: 0">Helping users make a real dent in climate change, in the comfort of their homes.</p><p></p>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:48px; border-top:1px solid var(--border); padding-top:28px;">
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#4fa877; margin-bottom:8px;">Role</div><div style="font-size:16px; line-height:1.4;">UX Designer (Contract)</div></div>
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#4fa877; margin-bottom:8px;">Timeline</div><div style="font-size:16px; line-height:1.4;">Jul 2021 – Jul 2022</div></div>
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#4fa877; margin-bottom:8px;">Focus</div><div style="font-size:16px; line-height:1.4;">Design system</div></div>
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#4fa877; margin-bottom:8px;">Standard</div><div style="font-size:16px; line-height:1.4;">WCAG &amp; accessibility</div></div>
+        </div>
+      </div>
+
+      <!-- hero showcase (full-bleed, cream) -->
+      <div style="background:#f1eee6;">
+        <img src="assets/nest/hero-showcase.jpg" alt="Nest Renew impact dashboards across tablet, phone and thermostat" style="width:100%; height:auto; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
+          <div style="font-size:15px; line-height:1.5; color:#5b5345; max-width:760px;">Nest Renew turns a thermostat into a climate tool, quietly shifting energy use to cleaner hours and showing people the impact they're making, together. My work helped that story stay consistent from the wall, to the phone, to the inbox.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#8a8073; white-space:nowrap;">Collective impact · multi-surface</div>
+        </div>
+      </div>
+
+      <!-- NDA note -->
+      <div style="padding:54px 48px 0; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4fa877; padding-top:8px;">A note</div>
+        <div style="border-left:3px solid #3f9d6a; padding-left:26px;">
+          <div style="font-family:'Instrument Serif',serif; font-size:26px; line-height:1.32; color:var(--text); margin-bottom:12px;">This work is under NDA.</div>
+          <div style="font-size:16px; line-height:1.6; color:var(--muted3);">I can't show the inner workings of what I built. What's here is the public surface of the project ~ the problem, my role, and the system thinking behind it. I'm glad to go deeper in conversation.</div>
+        </div>
+      </div>
+
+      <!-- 01 the idea -->
+      <div style="padding:64px 48px 56px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4fa877; padding-top:8px;">01 — The idea</div>
+        <div>
+          <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;">Climate action feels enormous and far away. Nest Renew makes it small, local, and yours.</h2>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">Nest Renew is a service that enhances the Nest Thermostat, automatically leaning your home's energy use toward cleaner, lower-cost hours. For anyone who wants to make a difference but doesn't know where to start, it's a worthwhile, low-effort place to begin.</p>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">The challenge for me sat one layer out from the device: how do you keep that fluid, encouraging core experience intact as it travels into people's inboxes?</p>
+        </div>
+      </div>
+      <div style="background:#f1eee6; padding:48px; display:grid; grid-template-columns:0.82fr 1fr; gap:48px; align-items:center;">
+        <div>
+          <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#2f7d54; margin-bottom:16px;">The question</div>
+          <div style="font-family:'Instrument Serif',serif; font-size:34px; line-height:1.22; color:#211c16;">How do you make addressing climate change easy and impactful — right from your home?</div>
+        </div>
+        <div style="border-radius:18px; overflow:hidden; background:#fff;">
+          <img src="assets/nest/home.png" alt="A hand adjusting a Nest thermostat, with a Leaf badge" style="width:100%; height:auto; display:block;">
+        </div>
+      </div>
+
+      <!-- 02 my role (dark green full-bleed) -->
+      <div style="background:#0c150f; color:#fff; padding:72px 48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4cc97f; margin-bottom:14px;">02 — My role</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 14px; max-width:780px;">As the sole UX designer on the project, I built the design system, with accessibility designed in, not bolted on.</h2>
+        <p style="font-size:17px; line-height:1.6; color:#9fc4ad; max-width:700px; margin:0;">One designer, one system that everything downstream could lean on: a shared visual language, reusable patterns, and WCAG / a11y compliance treated as a requirement of the components themselves. The point wasn't a style guide, it was making the right, accessible choice the easy one for everyone who used it after me.</p>
+      </div>
+
+      <!-- the system: moodboard (cream showcase) -->
+      <div style="background:#f1eee6; padding:64px 48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#2f7d54; margin-bottom:14px;">The system</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.1; margin:0 0 30px; max-width:720px; color:#211c16;">A warm, optimistic visual language:<div>&nbsp;green, hand-painted, and human, so clean energy felt approachable rather than preachy.</div></h2>
+        <div style="border-radius:18px; overflow:hidden; background:#fff;">
+          <img src="assets/nest/moodboard.png" alt="Nest Renew visual language — color, illustration, motifs and the thermostat" style="width:100%; height:auto; display:block;">
+        </div>
+        <div style="font-size:13.5px; color:#8a8073; margin-top:18px;">Color, painterly illustration, the Leaf motif and product photography, the kit every email was assembled from.</div>
+      </div>
+
+      <!-- the building blocks (cream) -->
+      <div style="background:#f1eee6; padding:64px 48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#2f7d54; margin-bottom:14px;">The building blocks</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.1; margin:0 0 30px; max-width:760px; color:#211c16;">A library of modular content blocks, every message a person could receive, specced once and assembled like Lego.</h2>
+        <div style="border-radius:18px; overflow:hidden; background:#fff;">
+          <img src="assets/nest/building-blocks.jpg" alt="Nest Renew content building blocks — Clean Energy Match, Carbon Avoided, Energy Impact, the Leaf, Energy Shift, billing, upsell and monthly challenge modules" style="width:100%; height:auto; display:block;">
+        </div>
+        <div style="font-size:13.5px; color:#8a8073; margin-top:18px;">Clean Energy Match, Carbon Avoided, the Leaf, Energy Shift, upsell, billing, monthly challenge, each a self-contained module with consistent structure, tone and accessible defaults, so any email could be composed from parts that already passed the bar.</div>
+      </div>
+
+      <!-- components: icons (dark) -->
+      <div style="background:#0c150f; color:#fff; padding:64px 48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4cc97f; margin-bottom:14px;">Components</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.1; margin:0 0 30px; max-width:720px;">Down to a reusable icon set for the everyday actions that earn a Leaf.</h2>
+        <div style="border:1px solid #1f3a2b; border-radius:18px; overflow:hidden; background:#0a120d;">
+          <img src="assets/nest/icons.png" alt="Reusable Nest Renew action icons" style="width:100%; height:auto; display:block;">
+        </div>
+        <div style="font-size:13.5px; color:#6f8f7c; margin-top:18px;">One icon family, consistent weight and meaning, reused across emails and product, so a Leaf-earning action looked the same everywhere a person met it.</div>
+      </div>
+
+      <!-- applied to emails (cream gallery) -->
+      <div style="background:#f1eee6; padding:64px 48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#2f7d54; margin-bottom:14px;">In practice</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.1; margin:0 0 30px; max-width:740px; color:#211c16;">Then the system did its job ~ a fluid, accessible email experience across the whole lifecycle.</h2>
+        <div style="border-radius:18px; overflow:hidden; background:#fff;">
+          <img src="assets/nest/hero-02.jpg" alt="Nest Renew lifecycle emails — onboarding, monthly impact, Leaf milestones and renewals" style="width:100%; height:auto; display:block;">
+        </div>
+        <div style="font-size:13.5px; color:#8a8073; margin-top:18px;">Waitlist to welcome, monthly impact, Leaf milestones, renewals, one coherent voice from the first email to the hundredth.</div>
+      </div>
+
+      <!-- leaf milestone feature (green photo) -->
+      <div style="background:#0c150f; padding:0;">
+        <img src="assets/nest/hero-03.jpg" alt="A Nest Renew Leaf milestone, seen on a phone outdoors" style="width:100%; height:auto; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
+          <div style="font-size:15px; line-height:1.5; color:#9fc4ad; max-width:760px;">Milestones turn an invisible service into something you can feel proud of; a small, repeatable moment of progress that says your home did something good today.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#6f8f7c; white-space:nowrap;">Leaf milestone · 100 leaves</div>
+        </div>
+      </div>
+
+      <!-- 03 outcome (dark) -->
+      <div style="background:#0c150f; color:#fff; padding:72px 48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4cc97f; margin-bottom:14px;">03 — Outputs</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 24px; color:#fff; max-width:820px;">We launched the service and the system outlived my contract.</h2>
+        <p style="font-size:18px; line-height:1.62; color:#9fc4ad; max-width:720px; margin:0 0 40px;">The team picked up the design system I developed and ran with it. Just as importantly, the accessibility practices I pushed for became part of how the Nest team works, my initiatives paved the way for a11y to be treated as a default, not an afterthought.</p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
+          <span style="border:1px solid #285139; border-radius:100px; padding:9px 18px; font-size:14px; color:#cfe9da;">Service launched</span>
+          <span style="border:1px solid #285139; border-radius:100px; padding:9px 18px; font-size:14px; color:#cfe9da;">Design system adopted by the team</span>
+          <span style="border:1px solid #285139; border-radius:100px; padding:9px 18px; font-size:14px; color:#cfe9da;">A11y practices made default</span>
+          <a href="https://nestrenew.google.com/welcome/" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; background:#1faa5f; color:#06190f; border-radius:100px; padding:10px 20px; font-size:14px; font-weight:700;">Visit Nest Renew ↗</a>
+        </div>
+      </div>
+
+      <!-- reflection -->
+      <div style="padding:72px 48px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4fa877; padding-top:8px;">04 — Reflection</div>
+        <div>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 22px;">Being the only designer on a project is its own kind of systems problem: you won't be in every room later, so the work has to carry your decisions for you. Building accessibility into the components, rather than asking people to remember it, was the highest-leverage thing I could do with one pair of hands.</p>
+          <div style="font-family:'Instrument Serif',serif; font-size:34px; line-height:1.25; color:var(--text);">A good system is generous. It makes the next person's accessible, on-brand choice the path of least resistance.</div>
+        </div>
+      </div>
+
+      <!-- next -->
+      <a href="dolby.html" style="display:flex; justify-content:space-between; align-items:center; background:#b8447a; color:#fff; padding:46px 48px;">
+        <div>
+          <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; opacity:.85; margin-bottom:8px;">Next case study</div>
+          <div style="font-family:'Instrument Serif',serif; font-size:38px;">Live in Dolby →</div>
+        </div>
+        <div style="font-size:14px; opacity:.9; max-width:260px; text-align:right;">An interactive live-music experience for fans and artists.</div>
+      </a>
+
+      <div style="background:#100d0a; color:#f0e9dd; padding:40px 48px; display:flex; justify-content:space-between; align-items:center; font-size:14px;">
+        <span style="color:#bdb2a2;">© 2026 Paula Narvaez :)</span>
+        <span style="display:flex; gap:22px; color:#d8cdb8;"><a href="https://www.linkedin.com/in/paulanarvaez/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:paula.narv@gmail.com">Email</a><span>@paulanarv</span></span>
+      </div>
+    </div>
+
+  <!-- mobile menu overlay -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:clamp(0px,2.5vw,48px); z-index:300; border-radius:clamp(0px,1.6vw,28px); background:var(--bg); color:var(--text); container-type:inline-size; overflow:hidden; display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:22px clamp(20px,5.4cqi,48px);">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <img src="assets/favicon.png" alt="" style="width:30px; height:30px; display:block;">
+          <div style="font-weight:700; font-size:16px;">Paula Narvaez</div>
+        </div>
+        <button onClick="{{ closeMenu }}" aria-label="Close menu" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; margin:-8px -8px -8px 0; padding:0; background:none; border:none; cursor:pointer; color:var(--text);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+        </button>
+      </div>
+      <nav style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(4px,1.4vh,12px); padding:0 clamp(20px,5.4cqi,48px) clamp(40px,10vh,90px);">
+        <a href="index.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--text);">Work</a>
+        <a href="play.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">Play</a>
+        <a href="about.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">About</a>
+        <a href="contact.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">Contact</a>
+        <a href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener" onClick="{{ closeMenu }}" style="font-size:17px; letter-spacing:.04em; text-transform:uppercase; color:var(--muted4); font-weight:600; margin-top:22px;">Résumé ↗</a>
+      </nav>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { theme: 'dark', menuOpen: false };
+  componentDidMount(){ try{ var t = localStorage.getItem('pn-theme-case'); if (t === 'light' || t === 'dark') this.setState({ theme: t }); }catch(e){} }
+  renderVals(){ return { theme: this.state.theme, menuOpen: this.state.menuOpen, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }) }; }
+}
+</script>
+</body>
+</html>

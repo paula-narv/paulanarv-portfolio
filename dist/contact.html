@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<style>html{background-color:#e2ddd2}html::before{content:"";position:fixed;inset:0;background:#e2ddd2;z-index:2147483600;pointer-events:none;transition:opacity .62s cubic-bezier(.22,1,.36,1)}html.pn-go::before{opacity:0}html.pn-none::before{display:none}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<style>
+  *{ box-sizing:border-box; }
+  body{ margin:0; }
+  a{ text-decoration:none; color:inherit; }
+  button{ font-family:inherit; }
+  .navlink{ transition:color .18s ease; }
+  .navlink:hover{ color:var(--text) !important; }
+  .theme-root{ --bg:#e2ddd2; --surface:#f6f1e9; --surface-hi:#fffdf9; --surface-lo:#faf7f0; --text:#211c16; --border:#e7ddca; --eyebrow:#a8927a; --muted1:#4a4238; --muted2:#544c41; --muted3:#6b6258; --muted4:#9a9081; --muted5:#a89e8d; --label:#3a342b; --hover:#f0e7d6; transition:background .35s ease; }
+  .theme-root[data-theme="dark"]{ --bg:#161310; --surface:#1e1914; --surface-hi:#221d17; --surface-lo:#1b1712; --text:#efe7d9; --border:#34291f; --eyebrow:#b29c84; --muted1:#c5baa9; --muted2:#bcae9c; --muted3:#a89c8b; --muted4:#8f8475; --muted5:#938878; --label:#cfc4b2; --hover:#2a241d; }
+  .seg{ transition:background .2s ease, color .2s ease; }
+  .theme-root:not([data-theme="dark"]) .seg-light{ background:var(--text); color:var(--bg); }
+  .theme-root[data-theme="dark"] .seg-dark{ background:var(--text); color:var(--bg); }
+  .crow{ transition:padding-left .25s ease, border-color .2s ease; }
+  .crow:hover{ padding-left:14px !important; border-color:var(--text) !important; }
+  .crow:hover .c-arrow{ transform:translateX(6px); color:var(--text) !important; }
+  .c-arrow{ transition:transform .25s ease, color .2s ease; }
+  .crow:hover .c-val{ color:var(--text) !important; }
+  @container (max-width: 620px){
+    .ct-nav-links{ display:none !important; }
+    .crow{ grid-template-columns:1fr auto !important; }
+    .c-key{ display:none !important; }
+    .ct-foot{ flex-direction:column-reverse !important; align-items:flex-start !important; gap:6px !important; font-size:12px !important; }
+    .ct-burger{ display:flex !important; }
+  }
+</style>
+<script src="transitions.js"></script>
+</helmet>
+
+<div class="theme-root" data-theme="{{ theme }}" style="min-height:100vh; background:var(--bg); font-family:'Hanken Grotesk',sans-serif; display:flex; justify-content:center; align-items:stretch; padding:clamp(20px,3.5vw,56px);">
+
+  <div data-screen-label="Contact" style="container-type:inline-size; width:100%; max-width:1480px; min-height:calc(100vh - clamp(40px,7vw,112px)); background:var(--surface-lo); border-radius:clamp(20px,2.2cqi,32px); box-shadow:0 1px 3px rgba(0,0,0,.12); overflow:hidden; color:var(--text); display:flex; flex-direction:column;">
+
+    <!-- nav -->
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; padding:clamp(22px,3cqi,30px) clamp(24px,5cqi,60px); border-bottom:1px solid var(--border);">
+      <a href="index.html" style="display:flex; align-items:center; gap:10px;">
+        <img src="assets/favicon.png" alt="" style="width:30px; height:30px; display:block;">
+        <div style="font-weight:700; font-size:16px;">Paula Narvaez</div>
+      </a>
+      <div class="ct-nav-links" style="display:flex; gap:clamp(16px,2.4cqi,28px); font-size:15px; color:var(--muted2);">
+        <a class="navlink" href="index.html">Work</a>
+        <a class="navlink" href="play.html">Play</a>
+        <a class="navlink" href="about.html">About</a>
+        <a class="navlink" href="contact.html" style="color:var(--text); font-weight:600;">Contact</a>
+        <a class="navlink" href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener">Résumé ↗</a>
+      </div>
+      <button class="ct-burger" onClick="{{ toggleMenu }}" aria-label="Open menu" style="display:none; align-items:center; justify-content:center; width:44px; height:44px; margin:-10px -10px -10px 0; padding:0; background:none; border:none; cursor:pointer; color:var(--text);">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 6.5h18M3 12h18M3 17.5h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+      </button>
+    </div>
+
+    <!-- center -->
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:clamp(40px,6cqi,84px) clamp(24px,5cqi,60px);">
+      <div style="max-width:880px;">
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:clamp(20px,2.6cqi,30px);">
+          <div style="width:34px; height:1.5px; background:var(--eyebrow);"></div>
+          <div style="font-size:13px; letter-spacing:.22em; text-transform:uppercase; color:var(--eyebrow); font-weight:600;">Get in touch</div>
+        </div>
+        <h1 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(58px,10cqi,128px); line-height:0.95; letter-spacing:-.015em; margin:0 0 clamp(22px,2.6cqi,30px);">Let's talk.</h1>
+        <p style="font-size:clamp(16px,1.5cqi,19px); line-height:1.55; color:var(--muted2); max-width:620px; margin:0 0 clamp(36px,4.5cqi,56px);">I'm currently open to Senior and Staff Product Designer roles. If you're building something that needs a systems thinker who ships, I'd love to hear about it.</p>
+
+        <div style="max-width:760px;">
+          <a class="crow" href="mailto:paula.narv@gmail.com" style="display:grid; grid-template-columns:minmax(120px,170px) 1fr auto; align-items:baseline; gap:clamp(16px,3cqi,40px); padding:clamp(20px,2.6cqi,28px) 0; border-top:1px solid var(--border);">
+            <div class="c-key" style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Email</div>
+            <div class="c-val" style="font-family:'Instrument Serif',serif; font-size:clamp(24px,3cqi,36px); line-height:1.05; color:var(--muted1);">paula.narv@gmail.com</div>
+            <div class="c-arrow" style="font-size:clamp(22px,2.4cqi,30px); color:var(--muted4);">↗</div>
+          </a>
+          <a class="crow" href="https://www.linkedin.com/in/paulanarvaez/" target="_blank" rel="noopener" style="display:grid; grid-template-columns:minmax(120px,170px) 1fr auto; align-items:baseline; gap:clamp(16px,3cqi,40px); padding:clamp(20px,2.6cqi,28px) 0; border-top:1px solid var(--border);">
+            <div class="c-key" style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">LinkedIn</div>
+            <div class="c-val" style="font-family:'Instrument Serif',serif; font-size:clamp(24px,3cqi,36px); line-height:1.05; color:var(--muted1);">in/paulanarvaez</div>
+            <div class="c-arrow" style="font-size:clamp(22px,2.4cqi,30px); color:var(--muted4);">↗</div>
+          </a>
+          <a class="crow" href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener" style="display:grid; grid-template-columns:minmax(120px,170px) 1fr auto; align-items:baseline; gap:clamp(16px,3cqi,40px); padding:clamp(20px,2.6cqi,28px) 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+            <div class="c-key" style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Résumé</div>
+            <div class="c-val" style="font-family:'Instrument Serif',serif; font-size:clamp(24px,3cqi,36px); line-height:1.05; color:var(--muted1);">Download PDF</div>
+            <div class="c-arrow" style="font-size:clamp(22px,2.4cqi,30px); color:var(--muted4);">↗</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="ct-foot" style="padding:clamp(22px,3cqi,28px) clamp(24px,5cqi,60px); border-top:1px solid var(--border); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:14px; color:var(--muted3);">
+      <span>Based in NYC · website vibe coded with ♡&nbsp;(˶ᵔ ᵕ ᵔ˶)</span>
+      <span>Replies within a day or two :)</span>
+    </div>
+  </div>
+
+  <!-- mobile menu overlay -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:clamp(20px,3.5vw,56px); z-index:300; border-radius:clamp(20px,2.2vw,32px); background:var(--bg); color:var(--text); container-type:inline-size; overflow:hidden; display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:clamp(22px,3cqi,30px) clamp(24px,5cqi,60px);">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <img src="assets/favicon.png" alt="" style="width:30px; height:30px; display:block;">
+          <div style="font-weight:700; font-size:16px;">Paula Narvaez</div>
+        </div>
+        <button onClick="{{ closeMenu }}" aria-label="Close menu" style="display:flex; align-items:center; justify-content:center; width:44px; height:44px; margin:-10px -10px -10px 0; padding:0; background:none; border:none; cursor:pointer; color:var(--text);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+        </button>
+      </div>
+      <nav style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(4px,1.4vh,12px); padding:0 clamp(24px,5cqi,60px) clamp(40px,10vh,90px);">
+        <a href="index.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">Work</a>
+        <a href="play.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">Play</a>
+        <a href="about.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">About</a>
+        <a href="contact.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--text);">Contact</a>
+        <a href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener" onClick="{{ closeMenu }}" style="font-size:17px; letter-spacing:.04em; text-transform:uppercase; color:var(--muted4); font-weight:600; margin-top:22px;">Résumé ↗</a>
+      </nav>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { theme: 'light', menuOpen: false };
+  componentDidMount(){ try{ var t = localStorage.getItem('pn-theme'); if (t === 'light' || t === 'dark') this.setState({ theme: t }); }catch(e){} }
+  setTheme(t){ this.setState({ theme: t }); try{ localStorage.setItem('pn-theme', t); }catch(e){} }
+  renderVals(){
+    return {
+      theme: this.state.theme,
+      setLight: () => this.setTheme('light'),
+      setDark: () => this.setTheme('dark'),
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

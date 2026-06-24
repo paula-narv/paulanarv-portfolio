@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<style>html{background-color:#161310}html::before{content:"";position:fixed;inset:0;background:#161310;z-index:2147483600;pointer-events:none;transition:opacity .62s cubic-bezier(.22,1,.36,1)}html.pn-go::before{opacity:0}html.pn-none::before{display:none}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  body{ margin:0; }
+  a{ text-decoration:none; color:inherit; }
+  button{ font-family:inherit; }
+  /* ---- theme tokens (dark = default for project pages) ---- */
+  .theme-root{ --bg:#161310; --surface:#1e1914; --surface-hi:#221d17; --surface-lo:#1b1712; --text:#efe7d9; --border:#34291f; --eyebrow:#b29c84; --muted1:#c5baa9; --muted2:#bcae9c; --muted3:#a89c8b; --muted4:#8f8475; --muted5:#938878; --label:#cfc4b2; --hover:#2a241d; transition:background .35s ease; }
+  .theme-root[data-theme="light"]{ --bg:#e2ddd2; --surface:#f6f1e9; --surface-hi:#fffdf9; --surface-lo:#faf7f0; --text:#211c16; --border:#e7ddca; --eyebrow:#a8927a; --muted1:#4a4238; --muted2:#544c41; --muted3:#6b6258; --muted4:#9a9081; --muted5:#a89e8d; --label:#3a342b; --hover:#f0e7d6; }
+  .seg{ transition:background .2s ease, color .2s ease; }
+  .theme-root:not([data-theme="light"]) .seg-dark{ background:var(--text); color:var(--bg); }
+  .theme-root[data-theme="light"] .seg-light{ background:var(--text); color:var(--bg); }
+  /* ---- responsive: collapse layout + scale display type as the frame narrows ---- */
+  @container (max-width: 980px){
+    .case-frame [style*="grid-template-columns: 0.42fr 1fr"]{ grid-template-columns:1fr !important; gap:18px !important; }
+    .case-frame [style*="grid-template-columns: 0.82fr 1fr"]{ grid-template-columns:1fr !important; gap:30px !important; }
+    .case-frame [style*="grid-template-columns: 1fr 0.62fr"]{ grid-template-columns:1fr !important; }
+    .case-frame [style*="repeat(4, 1fr)"]{ grid-template-columns:repeat(2,1fr) !important; }
+    .case-frame [style*="repeat(5, 1fr)"]{ grid-template-columns:repeat(2,1fr) !important; }
+  }
+  @container (max-width: 680px){
+    .case-frame [style*="px 48px"]{ padding-left:clamp(20px,5.4cqi,48px) !important; padding-right:clamp(20px,5.4cqi,48px) !important; }
+    .case-frame [style*="repeat(3, 1fr)"]{ grid-template-columns:1fr !important; }
+    .case-frame [style*="display: flex; gap: 24px"]{ flex-direction:column !important; }
+    .case-frame [style*="display: flex; gap: 28px"]{ flex-direction:column !important; }
+    .case-frame [style*="display: flex; gap: 64px"]{ flex-direction:column !important; gap:40px !important; align-items:center !important; }
+    .case-frame [style*="align-items: baseline; gap: 24px"]{ flex-direction:column !important; align-items:flex-start !important; gap:10px !important; }
+    .case-frame [style*="display: flex; gap: 20px"]{ flex-wrap:wrap !important; }
+    .case-frame [style*="display: flex; gap: 20px"] > div{ flex:1 1 calc(50% - 10px) !important; }
+    .case-frame [style*="padding: 46px 48px"]{ flex-direction:column !important; align-items:flex-start !important; gap:18px !important; }
+    .case-frame [style*="padding: 46px 48px"] [style*="text-align: right"]{ text-align:left !important; max-width:none !important; }
+    .case-frame h1{ font-size:clamp(34px,9.2cqi,92px) !important; line-height:1.03 !important; }
+    .case-frame h2{ font-size:clamp(27px,6.6cqi,44px) !important; line-height:1.14 !important; }
+    .case-frame [style*="font-size: 30px"]{ font-size:clamp(21px,5.4cqi,30px) !important; }
+    .case-frame [style*="font-size: 34px"]{ font-size:clamp(24px,5.8cqi,34px) !important; }
+    .case-frame [style*="font-size: 26px"]{ font-size:clamp(21px,5cqi,26px) !important; }
+    .case-frame [style*="font-size: 38px"]{ font-size:clamp(27px,6cqi,38px) !important; }
+    .case-frame [style*="font-size: 58px"]{ font-size:clamp(40px,10cqi,58px) !important; }
+    .case-frame [style*="font-size: 54px"]{ font-size:clamp(34px,8cqi,54px) !important; }
+    .case-frame [style*="font-size: 46px"]{ font-size:clamp(32px,7.5cqi,46px) !important; }
+    .case-frame [style*="font-size: 18px"]{ font-size:16px !important; }
+    .cf-backname{ display:none !important; }
+    .cf-backresume{ display:none !important; }
+    .cf-backallwork{ display:none !important; }
+    .cf-backhome{ display:flex !important; }
+    .case-burger{ display:flex !important; }
+  }
+  @container (max-width: 440px){
+    .case-frame [style*="repeat(4, 1fr)"], .case-frame [style*="repeat(5, 1fr)"]{ grid-template-columns:1fr !important; }
+  }
+</style>
+<script src="transitions.js"></script>
+</helmet>
+
+<div class="theme-root" data-theme="dark" style="min-height:100vh; background:var(--bg); font-family:'Hanken Grotesk',sans-serif; display:flex; justify-content:center; align-items:flex-start; padding:clamp(0px,2.5vw,48px);">
+    <div class="case-frame" style="width:100%; max-width:1180px; container-type:inline-size; background:var(--surface); border-radius:clamp(0px,1.6vw,28px); box-shadow:0 1px 3px rgba(0,0,0,.18); overflow:hidden; color:var(--text);">
+      <!-- back bar -->
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:22px 48px; border-bottom:1px solid var(--border); font-size:14px;">
+        <a class="cf-backhome" href="index.html" style="display:none; align-items:center; gap:10px;"><img src="assets/favicon.png" alt="" style="width:30px; height:30px; display:block;"><span style="font-weight:700; font-size:16px;">Paula Narvaez</span></a>
+        <a class="cf-backallwork" href="index.html" style="display:flex; align-items:center; gap:8px; font-weight:600;">← All work</a>
+        <a class="cf-backname" href="index.html" style="font-weight:700;">Paula Narvaez</a>
+        <a class="cf-backresume" href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener" style="color:var(--muted2);">Résumé ↗</a>
+        <button class="case-burger" onClick="{{ toggleMenu }}" aria-label="Open menu" style="display:none; align-items:center; justify-content:center; width:40px; height:40px; margin:-8px -8px -8px 0; padding:0; background:none; border:none; cursor:pointer; color:var(--text);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6.5h18M3 12h18M3 17.5h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+        </button>
+      </div>
+
+      <!-- hero -->
+      <div style="padding:72px 48px 52px;">
+        <div style="font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:#4a59c4; margin-bottom:24px;">CASE STUDY · FACEBOOK · DESIGN SYSTEMS</div>
+        <h1 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(46px,8.4cqi,92px); line-height:0.98; letter-spacing:-.01em; margin:0 0 26px;">Blueprint design system</h1>
+        <p style="font-family: 'Instrument Serif',serif; font-style: normal; font-size: 30px; line-height: 1.32; color: var(--muted2); max-width: 760px; margin: 0">I didn't just work in Facebook's design system. I built the patterns infrastructure that made it worth using.</p>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:48px; border-top:1px solid var(--border); padding-top:28px;">
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#4a59c4; margin-bottom:8px;">Role</div><div style="font-size:16px; line-height:1.4;">Patterns Designer</div></div>
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#4a59c4; margin-bottom:8px;">Timeline</div><div style="font-size:16px; line-height:1.4;">2022–2024 · 2 years</div></div>
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#4a59c4; margin-bottom:8px;">Team</div><div style="font-size:16px; line-height:1.4;">Blueprint (Design Systems)</div></div>
+          <div><div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#4a59c4; margin-bottom:8px;">Tools</div><div style="font-size:16px; line-height:1.4;">Figma, Internal tooling</div></div>
+        </div>
+      </div>
+
+      <!-- hero showcase mock (full-bleed) -->
+      <div style="background:#0d1b2a;">
+        <img src="assets/bp-hero-banner.jpg" alt="Facebook content-control patterns — contextual post feedback, the hidden-post menu, and reporting entry points" style="width:100%; height:auto; display:block;">
+      </div>
+
+      <!-- stat strip (dark) -->
+      <div style="background:#0a1622;">
+        <img src="assets/bp-stat-block.jpg" alt="Impact — 60+ pattern packages · 10% → 95% component quality-check pass rate · 4.3× above target on delivery · promoted mid-year, ahead of cycle" style="width:100%; height:auto; display:block;">
+      </div>
+
+      <!-- overview -->
+      <div style="padding:72px 48px 16px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; padding-top:8px;">01 — Overview</div>
+        <div>
+          <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;">The shared language for 3 billion users and the part of it nobody had built yet.</h2>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">Blueprint is Facebook's design system: the shared language 191 product teams use to build consistent, accessible experiences for 3 billion users. I joined as the sole patterns designer, just after a major reorg, as the team was scaling fast.</p>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">My job wasn't to use the system. It was to build the part of the system that made it teachable, repeatable, and trustworthy.</p>
+        </div>
+      </div>
+
+      <!-- the problem -->
+      <div style="padding:56px 48px 16px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; padding-top:8px;">02 — The problem</div>
+        <div>
+          <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;">On the surface, an adoption problem. Underneath, a trust problem.</h2>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">When a team decided a component didn't quite fit, they'd build a custom version, without the edge-case handling, the dark-mode specs, or the token structure the original was built around. The next team copied that. And the next.</p>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">But the deeper problem was the layer above components: patterns. Teams were designing the same experiences - reporting flows, share sheets, quick-action menus - independently, with no shared guidance and no definition of what a pattern even was. The design system wasn't broken. The infrastructure around it was.</p>
+          
+        </div>
+      </div>
+      <div style="padding:36px 48px 64px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div></div>
+        <div style="border-left:3px solid #d2603f; padding-left:26px;">
+          <div style="font-family:'Instrument Serif',serif; font-size:58px; line-height:1; color:var(--text);">1 in 10</div>
+          <div style="font-size:16px; color:var(--muted3); margin-top:10px;">components passed quality check (internal design quality standard) when I joined.</div>
+        </div>
+      </div>
+
+      <!-- context -->
+      <div style="padding:0 48px 72px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; padding-top:8px;">03 — Context</div>
+        <div>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">I joined right after a reorg that nearly quadrupled the team, from 4 people to close to 20, lots of energy, lots of good intention, almost no shared methodology. The team had component delivery down; what it didn't have was a repeatable, quality-gated process, or any way to recognize when a pattern was emerging across teams and needed to be codified.</p>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 24px;">Patterns had been on the roadmap for a while, everyone knew something needed to exist above the component layer, but it had never been executed. It was an idea without a home. Working closely with a director and a DPM, I was brought in to make it real.</p>
+          <div style="font-family:'Instrument Serif',serif; font-style:italic; font-size:26px; line-height:1.4; color:var(--text);">"I was the first dedicated patterns designer in Blueprint's history. There was no template to follow."</div>
+        </div>
+      </div>
+
+      <!-- process (dark full-bleed) -->
+      <div style="background:#0d1b2a; color:#fff; padding:72px 48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">04 — The process</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 14px; max-width:760px;">Before I built anything, I audited what was already there.</h2>
+        <p style="font-size:17px; line-height:1.6; color:#94a1b2; max-width:720px; margin:0 0 18px;">I catalogued the existing Facebook experiences, looking for arrangements that kept repeating, each built slightly differently by different teams with no shared reference. We prioritized by signal: high-frequency, high-impact, already shaping how teams built.</p>
+        <p style="font-size:17px; line-height:1.6; color:#94a1b2; max-width:720px; margin:0 0 40px;">Then I designed the methodology, a six-step process adapted from the component framework, with a quality gate between every step. Nothing shipped until it cleared all six. It was the first time Blueprint had a written, enforced standard for what "done" meant.</p>
+        <div style="border:1px solid #22364a; border-radius:18px; overflow:hidden; background:#0a1622;">
+          <img src="assets/bp-pipeline.jpg" alt="Six-step methodology pipeline" style="width:100%; height:auto; display:block;">
+        </div>
+        <p style="font-size:17px; line-height:1.6; color:#94a1b2; max-width:720px; margin:34px 0 0;">I built the working template every patterns deliverable was produced in, adapted from the same framework so anyone, including XFN partners, could drop in and hit the ground running.</p>
+      </div>
+
+      <!-- systems thinking -->
+      <div style="padding:72px 48px 40px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; padding-top:8px;">05 — Systems thinking</div>
+        <div>
+          <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;">Then I stopped asking "what components do we need?" and started asking "what patterns underlie all of them?"</h2>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">Bottom sheets were everywhere, Feed, Reels, Messaging, Marketplace, and every team had built their own. When three or more teams solve the same problem independently, that's a pattern waiting to be codified. I built 60+ pattern packages across 15+ pattern types, the first patterns program in Facebook Design System's history. Bottom sheets became my deepest area of expertise and the org's go-to reference, eventually unblocking a significant amount of GenAI work that had stalled waiting on that guidance.</p>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">As the team grew to three PDs, I had the most tenure, and stepped into an informal lead role: onboarding and mentoring each new designer so the methodology and quality bar transferred. The template I'd built became the handoff artifact, the same thing I'd hand a new hire on day one or an XFN partner. The Settings &amp; Controls partnership built the relationship that later led Trust &amp; Safety to ask for me by name during a reorg. I didn't apply; they came to me.</p>
+        </div>
+      </div>
+      <!-- bottom sheets: signature deep-dive -->
+      <div style="background:#0a1622; color:#fff; padding:64px 48px 30px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">Signature work · Bottom sheets</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 16px; max-width:820px;">One pattern, from inconsistent to consistent.</h2>
+        <p style="font-size:17px; line-height:1.6; color:#94a1b2; max-width:740px; margin:0;">A bottom sheet looks like one component. In practice, it was a dozen patterns wearing the same shell, share sheets, comment sheets, action sheets, and more, each team interpreting it differently. I built a decision matrix that mapped intent to the right type, giving designers one clear way to choose. Drag to compare.</p>
+      </div>
+      <div style="background:#0a1622; padding:0 48px 22px;">
+        <div style="position:relative; border:1px solid #22364a; border-radius:18px; overflow:hidden; background:#0d1b2a; aspect-ratio:2880/880; cursor:ew-resize; touch-action:none; user-select:none;">
+          <!-- base layer: AFTER -->
+          <img src="assets/bp-bottomsheet-after.jpg" alt="After — bottom sheets unified to a single consistent pattern across Facebook surfaces" draggable="false" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+          <!-- top layer: BEFORE, clipped to handle -->
+          <div style="position:absolute; inset:0; clip-path: {{ revealClip }};">
+            <img src="assets/bp-bottomsheet-before.jpg" alt="Before — inconsistent, independently-built bottom sheets across Facebook surfaces" draggable="false" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <!-- labels -->
+          <div style="position:absolute; top:16px; left:16px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#fff; background:rgba(10,22,34,.78); border:1px solid rgba(255,255,255,.14); padding:6px 12px; border-radius:100px; pointer-events:none;">Before · inconsistent</div>
+          <div style="position:absolute; top:16px; right:16px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#0a1622; background:#7c8cff; padding:6px 12px; border-radius:100px; pointer-events:none;">After · Unified pattern</div>
+          <!-- divider + handle -->
+          <div style="position:absolute; top:0; bottom:0; left: {{ dividerLeft }}; width:2px; background:#7c8cff; pointer-events:none; transform:translateX(-1px);">
+            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:42px; height:42px; border-radius:50%; background:#7c8cff; box-shadow:0 4px 16px rgba(0,0,0,.4); display:flex; align-items:center; justify-content:center;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 7l-4 5 4 5M15 7l4 5-4 5" stroke="#0a1622" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+          </div>
+          <!-- drag control -->
+          <input type="range" min="0" max="100" step="0.1" value="{{ reveal }}" onInput="{{ onReveal }}" aria-label="Drag to compare before and after" style="position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:ew-resize;">
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:16px 0 4px;">
+          <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">A small sample of the sprawl, before and after. The guidelines and framework I built gave teams one bottom-sheet pattern to reach for, replacing scattered one-off builds, and later unblocked GenAI work that had stalled waiting on the guidance.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">Bottom sheet · before → after</div>
+        </div>
+      </div>
+      <!-- bottom sheet: under-the-hood spec -->
+      <div style="background:#0d1b2a; color:#fff; padding:56px 48px 30px;">
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.1; margin:0 0 16px; max-width:780px;">So I specced it, down to the token.</h2>
+        <p style="font-size:17px; line-height:1.6; color:#94a1b2; max-width:740px; margin:0;">Every bottom sheet variant mapped to a named component, every gap to a spacing token, every string to a type style. It became the reference teams brought their bottom sheets back to, and the reason they kept asking me to review and refine theirs. The spec set the bar; I was the one who held it.</p>
+      </div>
+      <div style="background:#0d1b2a;">
+        <img src="assets/bp-bottomsheet-annotations.jpg" alt="Two bottom sheets fully redlined — components (bottom sheet header, text pairing, list cell group, selection cell, button, container), spacing tokens (12DP MED, 8DP SMALL), and type styles (TEXT/HEADLINE 3 EMPHASIZED, TEXT/BODY 3)" style="width:100%; height:auto; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
+          <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">Components, spacing, and semantics annotated in one artifact, the level of rigor that turned "the org's go-to reference" from a claim into something a partner team could pick up and ship.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">Bottom sheet · annotated spec</div>
+        </div>
+      </div>
+      <!-- anatomy of a pattern (featured showcase) -->
+      <div style="background:#0d1b2a; color:#fff; padding:64px 48px 36px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">Anatomy of a pattern</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.1; margin:0; max-width:780px;">A pattern isn't a screen, it's a set of specced components, and the rules for how they fit together.</h2>
+      </div>
+      <div style="background:#0d1b2a;">
+        <img src="assets/bp-people-picker-anatomy.jpg" alt="The People Picker pattern decomposed into its specced main components — navigation bar, search bar, contextual message, unit header, profile h-scroll, selection cell table, persistent CTA, and home affordance" style="width:100%; height:auto; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
+          <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">The People Picker, decomposed: each region of the pattern maps to a reusable main component with its own redlines, tokens, and accessibility annotations. Document the pieces and the relationships once, and any team can assemble the whole correctly.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">People picker · pattern anatomy</div>
+        </div>
+      </div>
+      <!-- share sheet showcase (full-bleed, relocated) -->
+      <div style="background:#0d1b2a;">
+        <img src="assets/bp-sharesheet.jpg" alt="The share sheet pattern specced across phone breakpoints" style="width:100%; height:auto; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
+          <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">A single pattern, the share sheet, specced across every breakpoint, down to redline spacing and entity counts. This is the level of rigor every Blueprint component had to meet before it shipped.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">Share sheet · responsive spec</div>
+        </div>
+      </div>
+      <!-- patterns gallery (dark, cohesive) -->
+      <div style="background:#0d1b2a; color:#fff; padding:64px 48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">Patterns in practice</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.1; margin:0 0 30px; max-width:720px;">Codified once, shipped into the surfaces 3 billion people use.</h2>
+        <div style="display:flex; flex-direction:column; gap:22px;">
+          <div style="border:1px solid #22364a; border-radius:18px; overflow:hidden; background:#0a1622;">
+            <img src="assets/bp-library.jpg" alt="Blueprint component and pattern library" style="width:100%; height:auto; display:block;">
+          </div>
+          <div style="border:1px solid #22364a; border-radius:18px; overflow:hidden; background:#0d1b2a;">
+            <img src="assets/bp-marketplace-anatomy.jpg" alt="Exploded anatomy of the Marketplace surface — screen overlay, navigation, surface actions, media grid tiles, and base layers" style="width:100%; height:auto; display:block;">
+          </div>
+        </div>
+        <div style="font-size:13.5px; color:#5b6b7e; margin-top:18px;">The component &amp; pattern library · and a full surface exploded into its anatomical layers.</div>
+      </div>
+      <div style="padding:44px 48px 64px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div></div>
+        <div style="border-left:3px solid #3f7d5a; padding-left:26px;">
+          <div style="font-family:'Instrument Serif',serif; font-size:46px; line-height:1; color:var(--text);">60+ packages · 15+ types</div>
+          <div style="font-size:16px; color:var(--muted3); margin-top:10px;">I was one of four chosen for Blueprint's Partnerships pilot, embedding with Settings &amp; Controls, Marketplace, Events, and Local. Partner QC climbed from 20% to 80%+.</div>
+        </div>
+      </div>
+
+      <!-- reporting flow: x-Meta Integrity partnership -->
+      <div style="background:#0a1622; color:#fff; padding:64px 48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">x-Meta Integrity partnership</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.1; margin:0 0 18px; max-width:780px;">How might we adopt a consistent design system without impacting key metrics?</h2>
+        <p style="font-size:17px; line-height:1.6; color:#94a1b2; max-width:720px; margin:0 0 36px;">The user reporting feature migrated from a deprecated framework onto Bloks, adopting Blueprint for design coherence across 12 surfaces. A global rollout across every locale and app version, validated through A/B testing and primary-metric monitoring, so modernizing the codebase never came at the cost of the numbers.</p>
+        <div style="border:1px solid #22364a; border-radius:18px; overflow:hidden; background:#0a1622;">
+          <img src="assets/bp-report.jpg" alt="Reporting confirmation flow shipped across three device sizes" style="width:100%; height:auto; display:block;">
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; margin-top:18px;">
+          <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">Shipped across three device sizes, honoring the spec at every breakpoint while primary metrics held flat.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">Reporting flow · Bloks + Blueprint</div>
+        </div>
+      </div>
+
+      <!-- motion reel (placeholder) -->
+      <div style="padding:72px 48px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px;">
+          <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4;">See it in motion</div>
+          
+        </div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 36px; max-width:720px;">The spec, alive ~ motion was half of what made these patterns reusable.</h2>
+        <div style="display:flex; gap:64px; justify-content:center;">
+          <div style="flex:0 0 260px; text-align:center;">
+            <div style="border-radius: 20px; overflow: hidden; border: 1px solid var(--hover); background: #0a0805; display: flex; align-items: center; justify-content: center; width: 260px">
+              <video src="assets/bp-states-bottom-sheets.mp4" autoplay="" muted="" loop="" playsinline="" style="display:block; width:100%; max-height:582px; object-fit:contain;"></video>
+            </div>
+            <div style="margin-top:18px;">
+              <div style="font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:#4a59c4; margin-bottom:7px;">01 · States</div>
+              <div style="font-family:'Instrument Serif',serif; font-size:24px; line-height:1.08; margin-bottom:7px;">Bottom sheet, every state</div>
+              <div style="font-size:14px; line-height:1.5; color:var(--muted3);">Drag, snap, dismiss, the motion spec other teams now reference.</div>
+            </div>
+          </div>
+          <div style="flex:0 0 260px; text-align:center;">
+            <div style="border-radius: 20px; overflow: hidden; border: 1px solid var(--hover); background: #0a0805; display: flex; align-items: center; justify-content: center; width: 260px">
+              <video src="assets/bp-flow-people-picker.mp4" autoplay="" muted="" loop="" playsinline="" style="display:block; width:100%; max-height:582px; object-fit:contain;"></video>
+            </div>
+            <div style="margin-top:18px;">
+              <div style="font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:#4a59c4; margin-bottom:7px;">02 · Flow</div>
+              <div style="font-family:'Instrument Serif',serif; font-size:24px; line-height:1.08; margin-bottom:7px;">People picker, end to end</div>
+              <div style="font-size: 14px; line-height: 1.5; color: var(--muted3)">Search, select, limit-reached, one pattern, every entry point.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- embedded prototype (placeholder) -->
+      <div style="background:#0d1b2a; color:#fff; padding:72px 48px; display:grid; grid-template-columns:0.82fr 1fr; gap:52px; align-items:center;">
+        <div>
+          <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">Try it yourself</div>
+          <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.1; margin:0 0 16px; color:#fff;">The patterns page, running in the browser.</h2>
+          <p style="font-size:17px; line-height:1.6; color:#94a1b2; margin:0 0 28px; max-width:440px;">Scroll through the Patterns library: every reusable arrangement, documented with usage guidance and real examples. This is the single source designers reach for before building anything new.</p>
+        </div>
+        <div style="border-radius:14px; overflow:hidden; border:1px solid #22364a; background:#0a1622;">
+          <div style="display:flex; align-items:center; gap:7px; padding:12px 16px; border-bottom:1px solid #22364a;">
+            <div style="width:10px; height:10px; border-radius:50%; background:#2c4258;"></div>
+            <div style="width:10px; height:10px; border-radius:50%; background:#2c4258;"></div>
+            <div style="width:10px; height:10px; border-radius:50%; background:#2c4258;"></div>
+            <div style="margin-left:10px; flex:1; height:24px; border-radius:7px; background:#0d1b2a; display:flex; align-items:center; padding:0 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#5b6b7e;">blueprint.patterns/home</div>
+          </div>
+          <div style="position:relative; aspect-ratio:16/10; overflow-y:auto; overflow-x:hidden; background:#fff; border-radius:4px;">
+            <img src="assets/blueprint-patterns-scroll.webp" alt="Facebook Design System — Patterns library" style="display:block; width:100%; height:auto;">
+          </div>
+        </div>
+      </div>
+
+      <!-- curveball -->
+      <div style="padding:72px 48px 72px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; padding-top:8px;">06 — The curveball</div>
+        <div>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 24px;">The patterns team never grew the way we hoped; at our largest, two full-time designers and one part-time. The real wall wasn't creative, it was engineering bandwidth. We couldn't get dedicated engineers to build our specs into code: components took precedence, and a newer Design Language program absorbed much of the team's technical attention.&nbsp;</p><p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 24px;">So I stopped waiting and started looking horizontally, finding product teams already building features that intersected our patterns, then embedding to help them ship the pattern in code. Mutual gain, not charity. It meant learning a skill I hadn't anticipated, cross-org sales: reading roadmaps, finding the right POCs, and making the case to PD leads. I even built a deck for it.</p>
+          <div style="font-family:'Instrument Serif',serif; font-style:italic; font-size:26px; line-height:1.4; color:var(--text);">"Seeing horizontally across the org, who needed what and when, became one of the most valuable things I built."</div>
+        </div>
+      </div>
+
+      <!-- outcome (dark) -->
+      <div style="background:#0d1b2a; color:#fff; padding:72px 48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">07 — Outcome</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 44px; color:#fff;">What shipped, and what stuck.</h2>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:40px; border-top:1px solid #22364a; padding-top:40px;">
+          <div><div style="font-size:54px; font-weight:800; letter-spacing:-.02em;">10→95%</div><div style="font-size:14px; color:#94a1b2; margin-top:10px;">Component quality-check pass rate</div></div>
+          <div><div style="font-size:54px; font-weight:800; letter-spacing:-.02em;">4.3×</div><div style="font-size:14px; color:#94a1b2; margin-top:10px;">Above target on delivery</div></div>
+          <div><div style="font-size:54px; font-weight:800; letter-spacing:-.02em;">20→80%+</div><div style="font-size:14px; color:#94a1b2; margin-top:10px;">Partner team QC across 4 teams</div></div>
+        </div>
+        <div style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap;">
+          <span style="border:1px solid #2c4258; border-radius:100px; padding:9px 18px; font-size:14px; color:#cdd7e2;">Bottom-sheet standard → org reference</span>
+          <span style="border:1px solid #2c4258; border-radius:100px; padding:9px 18px; font-size:14px; color:#cdd7e2;">GenAI work unblocked</span>
+          <span style="border:1px solid #2c4258; border-radius:100px; padding:9px 18px; font-size:14px; color:#cdd7e2;">Mid-year promotion, ahead of cycle</span>
+        </div>
+      </div>
+
+      <!-- reflection -->
+      <div style="padding:72px 48px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; padding-top:8px;">08 — Reflection</div>
+        <div>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 22px;">After I moved to Trust &amp; Safety, I was deep in an unrelated project when I noticed a net-new card variant that didn't exist in the system. I wrote the spec, pushed it through Blueprint review, and it shipped. The methodology had become instinct: I didn't have to be on the team to think in systems. What I didn't expect was how much I'd fall in love with the teaching side, watching a team's QC climb and seeing designers start asking the right questions on their own.</p>
+          <div style="font-family:'Instrument Serif',serif; font-size:34px; line-height:1.25; color:var(--text);">The methodology is the product. I just happened to ship a lot of components along the way.</div>
+        </div>
+      </div>
+
+      <!-- next -->
+      <a href="nest.html" style="display:flex; justify-content:space-between; align-items:center; background:#3f7d5a; color:#fff; padding:46px 48px;">
+        <div>
+          <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; opacity:.85; margin-bottom:8px;">Next case study</div>
+          <div style="font-family:'Instrument Serif',serif; font-size:38px;">Nest Renew: Emails →</div>
+        </div>
+        <div style="font-size:14px; opacity:.9; max-width:260px; text-align:right;">Helping people make a real impact on climate change.</div>
+      </a>
+
+      <div style="background:#100d0a; color:#f0e9dd; padding:40px 48px; display:flex; justify-content:space-between; align-items:center; font-size:14px;">
+        <span style="color:#bdb2a2;">© 2026 Paula Narvaez :)</span>
+        <span style="display:flex; gap:22px; color:#d8cdb8;"><a href="https://www.linkedin.com/in/paulanarvaez/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:paula.narv@gmail.com">Email</a><span>@paulanarv</span></span>
+      </div>
+    </div>
+
+  <!-- mobile menu overlay -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:clamp(0px,2.5vw,48px); z-index:300; border-radius:clamp(0px,1.6vw,28px); background:var(--bg); color:var(--text); container-type:inline-size; overflow:hidden; display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:22px clamp(20px,5.4cqi,48px);">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <img src="assets/favicon.png" alt="" style="width:30px; height:30px; display:block;">
+          <div style="font-weight:700; font-size:16px;">Paula Narvaez</div>
+        </div>
+        <button onClick="{{ closeMenu }}" aria-label="Close menu" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; margin:-8px -8px -8px 0; padding:0; background:none; border:none; cursor:pointer; color:var(--text);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+        </button>
+      </div>
+      <nav style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(4px,1.4vh,12px); padding:0 clamp(20px,5.4cqi,48px) clamp(40px,10vh,90px);">
+        <a href="index.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--text);">Work</a>
+        <a href="play.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">Play</a>
+        <a href="about.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">About</a>
+        <a href="contact.html" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif; font-size:clamp(40px,13vw,60px); line-height:1.04; color:var(--muted2);">Contact</a>
+        <a href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener" onClick="{{ closeMenu }}" style="font-size:17px; letter-spacing:.04em; text-transform:uppercase; color:var(--muted4); font-weight:600; margin-top:22px;">Résumé ↗</a>
+      </nav>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { theme: 'dark', menuOpen: false, reveal: 50 };
+  componentDidMount(){
+    try{ var t = localStorage.getItem('pn-theme-case'); if (t === 'light' || t === 'dark') this.setState({ theme: t }); }catch(e){}
+    this._playVids();
+    setTimeout(() => this._playVids(), 400);
+    this._vidKick = () => this._playVids();
+    window.addEventListener('pointerdown', this._vidKick);
+  }
+  componentWillUnmount(){ if (this._vidKick) window.removeEventListener('pointerdown', this._vidKick); }
+  componentDidUpdate(){ this._playVids(); }
+  _playVids(){ try{ document.querySelectorAll('video').forEach((v) => { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = true; v.setAttribute('muted',''); v.setAttribute('playsinline',''); var p = v.play(); if (p && p.catch) p.catch(() => {}); }); }catch(e){} }
+  setTheme(t){ this.setState({ theme: t }); try{ localStorage.setItem('pn-theme-case', t); }catch(e){} }
+  renderVals(){ var p = this.state.reveal; return { theme: this.state.theme, setLight: () => this.setTheme('light'), setDark: () => this.setTheme('dark'), menuOpen: this.state.menuOpen, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }), reveal: p, revealClip: 'inset(0 ' + (100 - p) + '% 0 0)', dividerLeft: p + '%', onReveal: (e) => this.setState({ reveal: parseFloat(e.target.value) }) }; }
+}
+</script>
+</body>
+</html>
