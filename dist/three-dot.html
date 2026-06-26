@@ -69,7 +69,7 @@
     <div class="case-frame" style="width:100%; max-width:1180px; container-type:inline-size; background:var(--surface); border-radius:clamp(0px,1.6vw,28px); box-shadow:0 1px 3px rgba(0,0,0,.18); overflow:hidden; color:var(--text);">
       <!-- back bar -->
       <div style="display:flex; justify-content:space-between; align-items:center; padding:22px 48px; border-bottom:1px solid var(--border); font-size:14px;">
-        <a class="cf-backhome" href="index.html" style="display:none; align-items:center; gap:10px;"><img src="assets/favicon.png" alt="" style="width:30px; height:30px; display:block;"><span style="font-weight:700; font-size:16px;">Paula Narvaez</span></a>
+        <a class="cf-backhome" href="index.html" style="display:none; align-items:center; gap:10px;"><span style="font-weight:700; font-size:16px;">Paula Narvaez</span></a>
         <a class="cf-backallwork" href="index.html" style="display:flex; align-items:center; gap:8px; font-weight:600;">← All work</a>
         <a class="cf-backname" href="index.html" style="font-weight:700;">Paula Narvaez</a>
         <a class="cf-backresume" href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener" style="color:var(--muted2);">Résumé ↗</a>
@@ -91,6 +91,18 @@
         </div>
       </div>
 
+<!-- impact strip (dark) -->
+      <div style="background:#0a1622; color:#fff; padding:54px 48px;">
+        <div style="font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#5b6b7e; margin-bottom:30px;">Impact</div>
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:24px; text-align:center;">
+          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">3B+</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">Users reached</div></div>
+          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">14→~4+</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">Controls simplified</div></div>
+          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">4 mo</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">Idea to ship</div></div>
+          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">1:1</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">Shipped as designed</div></div>
+          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">10+</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">XFN teams aligned</div></div>
+        </div>
+      </div>
+
       <!-- hero showcase mock (full-bleed) -->
       <div style="background:#0d1b2a;">
         <img src="assets/3dot-options.jpg" alt="Short-term, mid-term, and north-star versions of the menu" style="width:100%; height:auto; display:block;">
@@ -100,25 +112,12 @@
         </div>
       </div>
 
-      <!-- impact strip (dark) -->
-      <div style="background:#0a1622; color:#fff; padding:54px 48px;">
-        <div style="font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#5b6b7e; margin-bottom:30px;">Impact</div>
-        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:24px;">
-          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">3B+</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">Users reached</div></div>
-          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">14→~4+</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">Controls simplified</div></div>
-          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">4 mo</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">Idea to ship</div></div>
-          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">1:1</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">Shipped as designed</div></div>
-          <div><div style="font-size:46px; font-weight:800; letter-spacing:-.02em;">10+</div><div style="font-size:13.5px; color:#94a1b2; margin-top:8px;">XFN teams aligned</div></div>
-        </div>
-      </div>
-
       <!-- 01 the problem -->
       <div style="padding:72px 48px 16px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#d2603f; padding-top:8px;">01 — The problem</div>
         <div>
           <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;">Fourteen controls in one menu, and four years of failed attempts to fix it.</h2>
-          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">The 3-dot menu is how people control their own Facebook experience: what they see, save, hide, or report. Over time it became a junk drawer. Every team that touched Feed added a control and no one would give theirs up, so it grew to roughly 14 options: redundant, inconsistent across surfaces, none prioritized. UXR was blunt, 44% of the words people used to describe it were negative: confusing, overwhelming, pushy.</p>
-          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">It wasn't cosmetic. Decision fatigue meant people disengaged from the controls entirely, the noise hurt ranking signals, and competitors like LinkedIn, X, Threads, and Instagram had already moved toward fewer, clearer controls. Three separate efforts had tried to fix it and stalled, not on design, but on alignment.</p>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">The 3-dot menu is how people control their Facebook experience, what they see, save, hide, or report. Over time it became a junk drawer of ~14 controls, and UXR was blunt: 44% of the words people used to describe it were negative.</p>
         </div>
       </div>
       <div style="padding:36px 48px 64px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
@@ -134,14 +133,13 @@
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#d2603f; padding-top:8px;">02 — Exploration</div>
         <div>
           <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;">I started with a pitch, not a prototype.</h2>
-          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">Before a pixel moved, I framed two strategic options for leadership, incremental cleanup versus a bold new model, with honest tradeoffs and a clear recommendation: the bold path, despite the risk. That pitch set four design principles that guided every decision after it:</p>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">Before a pixel moved, I framed two options for leadership, incremental cleanup versus a bold new model, with honest tradeoffs and a clear recommendation: go bold. That pitch set four principles:</p>
           <ul style="list-style:none; margin:0 0 18px; padding:0; display:grid; gap:10px;">
             <li style="display:flex; gap:12px; align-items:baseline; font-size:18px; line-height:1.5; color:var(--muted1);"><span style="flex:none; width:7px; height:7px; border-radius:50%; background:#d2603f; transform:translateY(-3px);"></span>Surface essential controls</li>
             <li style="display:flex; gap:12px; align-items:baseline; font-size:18px; line-height:1.5; color:var(--muted1);"><span style="flex:none; width:7px; height:7px; border-radius:50%; background:#d2603f; transform:translateY(-3px);"></span>No duplication</li>
             <li style="display:flex; gap:12px; align-items:baseline; font-size:18px; line-height:1.5; color:var(--muted1);"><span style="flex:none; width:7px; height:7px; border-radius:50%; background:#d2603f; transform:translateY(-3px);"></span>Progressive disclosure</li>
             <li style="display:flex; gap:12px; align-items:baseline; font-size:18px; line-height:1.5; color:var(--muted1);"><span style="flex:none; width:7px; height:7px; border-radius:50%; background:#d2603f; transform:translateY(-3px);"></span>Modern and YA-ready</li>
           </ul>
-          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">Then I led with data, not design. With my tech lead, I built risk assessments, impact analyses, and ranking-signal projections, and showed each team exactly how the change would move their numbers. Not “this is cleaner for users,” but “here is what this means for your signals.”</p>
         </div>
       </div>
       <div style="background:#0d1b2a;">
@@ -155,10 +153,9 @@
       <!-- 03 the north star -->
       <div style="background:#0a1622; color:#fff; padding:72px 48px 64px;">
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">03 — The north star</div>
-        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 14px; max-width:760px;">Every control mapped to a job, and a tier.</h2>
-        <p style="font-size:17px; line-height:1.6; color:#94a1b2; max-width:680px; margin:0 0 40px;">Every control faced three questions: is it legally required, is it actually used (last 30 days of click-through), and does it have a better home elsewhere? What survived was clear: Interested / Not Interested, Save, Why Am I Seeing This, and Report. Nothing else was deleted, it was rehomed, mapped on a control matrix so nothing vanished without another entry point.</p>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 40px; max-width:760px;">Every control mapped to a job, and a tier.</h2>
         <div style="border:1px solid #22364a; border-radius:18px; overflow:hidden; background:#0a1622;">
-          <img src="assets/3dot-metaai.jpg" alt="North-star menu annotated with structure and elements" style="width:100%; height:auto; display:block;">
+          <img src="assets/3dot-structure-elements.jpg" alt="North-star menu annotated with structure and elements" style="width:100%; height:auto; display:block;">
         </div>
       </div>
 
@@ -187,6 +184,7 @@
               <div style="font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:#d2603f; margin-bottom:7px;">02 · After</div>
               <div style="font-family:'Instrument Serif',serif; font-size:24px; line-height:1.08; margin-bottom:7px;">Fourteen collapse into four</div>
               <div style="font-size:14px; line-height:1.5; color:var(--muted3);">The simplified set that shipped: four core controls, nothing essential lost.</div>
+              <div style="font-size:12.5px; line-height:1.5; color:var(--muted3); opacity:.7; margin-top:8px; font-style:italic;">Note: the ads menu would be a follow-up test.</div>
             </div>
           </div>
         </div>
@@ -197,22 +195,14 @@
         <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:30px;">
           <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#d2603f;">More states</div>
         </div>
-        <div style="display:flex; gap:20px;">
-          <div style="flex:1;">
+        <div style="display:flex; gap:20px; justify-content:center;">
+          <div style="flex:0 1 260px;">
             <div style="aspect-ratio:9/19.5; border-radius:18px; overflow:hidden; border:1px solid var(--hover); background:#0a0805;"><img src="assets/3dot-state-collapsed.png" alt="Collapsed menu" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top;"></div>
             <div style="font-size:13px; color:var(--muted3); margin-top:12px; text-align:center;">Collapsed menu</div>
           </div>
-          <div style="flex:1;">
+          <div style="flex:0 1 260px;">
             <div style="aspect-ratio:9/19.5; border-radius:18px; overflow:hidden; border:1px solid var(--hover); background:#0a0805;"><img src="assets/3dot-state-secondary.png" alt="Secondary controls" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top;"></div>
             <div style="font-size:13px; color:var(--muted3); margin-top:12px; text-align:center;">Secondary controls</div>
-          </div>
-          <div style="flex:1;">
-            <div style="aspect-ratio:9/19.5; border-radius:18px; overflow:hidden; border:1px solid var(--hover); background:#0a0805;"><img src="assets/3dot-state-discovery.png" alt="Discovery layer" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top;"></div>
-            <div style="font-size:13px; color:var(--muted3); margin-top:12px; text-align:center;">Discovery layer</div>
-          </div>
-          <div style="flex:1;">
-            <div style="aspect-ratio:9/19.5; border-radius:18px; overflow:hidden; border:1px solid var(--hover); background:#0a0805;"><img src="assets/3dot-state-report.png" alt="Report confirmation" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top;"></div>
-            <div style="font-size:13px; color:var(--muted3); margin-top:12px; text-align:center;">Report confirmation</div>
           </div>
         </div>
       </div>
@@ -222,8 +212,7 @@
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#d2603f; padding-top:8px;">04 — The curveball</div>
         <div>
           <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;">Then Meta AI entered the chat.</h2>
-          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 18px;">Mid-process, a new ask came down from the very top: Meta AI needed to live in the 3-dot menu, a direct request from Mark Zuckerberg. It was the opposite of everything I'd been fighting for, more surface, more complexity, more negotiation. So I had a choice: push back and lose, or adapt without giving up the core goals.</p>
-          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">I adapted. I co-designed an AI Discovery Layer with a Discovery designer, a Meta AI summary, account transparency, a one-tap prompt entry, and ranked media actions, working closely with the Discovery, Feed, and Search teams to fit it in without unwinding the consolidation. On the UI I held the line: icon consistency, color-token alignment, secondary strings cut, only primary labels kept. What launched wasn't far from what I first pitched.</p>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">Mid-process, a request came down from the very top: Meta AI needed to live in the 3-dot menu, the opposite of everything I'd been fighting for. I adapted without giving up the core goals, and what launched wasn't far from what I first pitched.</p>
           <div style="display:flex; gap:28px; align-items:flex-start; margin-top:32px;">
             <div style="flex:0 0 260px;">
               <div style="border-radius:20px; overflow:hidden; border:1px solid var(--hover); background:#0a0805; display:flex; align-items:center; justify-content:center; width:260px;">
@@ -237,6 +226,14 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- meta AI annotated layout -->
+      <div style="padding:0 48px 64px;">
+        <div style="border:1px solid #22364a; border-radius:18px; overflow:hidden; background:#0a1622;">
+          <img src="assets/3dot-metaai.jpg" alt="Menu annotated with the added Meta AI discovery layer" style="width:100%; height:auto; display:block;">
+        </div>
+        <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px; margin-top:18px;">The same structure with the Meta AI discovery layer folded in, a net-new surface at the top, the four core controls left untouched.</div>
       </div>
 
       <!-- 05 outcome (dark) -->
@@ -259,7 +256,7 @@
       <div style="padding:72px 48px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#d2603f; padding-top:8px;">06 — Reflection</div>
         <div>
-          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 22px;">The design was never the hard part, three teams had already proven a cleaner menu was possible. The unlock wasn't a design decision; it was changing the conversation, from design rationale to data, risk, and business impact, and building the artifact that made the bold version feel like the safe one. Working alongside my engineering partner was the most meaningful collaboration of my time at Meta: two people moving something an entire org couldn't for four years.</p>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 22px;">The design was never the hard part, three teams had already proven a cleaner menu was possible. The unlock was changing the conversation: from design rationale to data, risk, and business impact, and building the artifact that made the bold version feel like the safe one.</p>
           <div style="font-family:'Instrument Serif',serif; font-size:34px; line-height:1.25; color:var(--text);">Alignment is a design problem. I just happened to redraw a menu along the way.</div>
         </div>
       </div>
@@ -284,7 +281,7 @@
     <div style="position:fixed; inset:clamp(0px,2.5vw,48px); z-index:300; border-radius:clamp(0px,1.6vw,28px); background:var(--bg); color:var(--text); container-type:inline-size; overflow:hidden; display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
       <div style="display:flex; justify-content:space-between; align-items:center; padding:22px clamp(20px,5.4cqi,48px);">
         <div style="display:flex; align-items:center; gap:10px;">
-          <img src="assets/favicon.png" alt="" style="width:30px; height:30px; display:block;">
+          
           <div style="font-weight:700; font-size:16px;">Paula Narvaez</div>
         </div>
         <button onClick="{{ closeMenu }}" aria-label="Close menu" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; margin:-8px -8px -8px 0; padding:0; background:none; border:none; cursor:pointer; color:var(--text);">
