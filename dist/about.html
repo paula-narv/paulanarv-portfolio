@@ -28,14 +28,15 @@
   .theme-root:not([data-theme="dark"]) .seg-light{ background:var(--text); color:var(--bg); }
   .theme-root[data-theme="dark"] .seg-dark{ background:var(--text); color:var(--bg); }
   @container (max-width: 880px){
-    .ab-grid{ grid-template-columns:1fr !important; gap:32px !important; }
+    .ab-grid{ grid-template-columns:1fr !important; gap:28px !important; align-items:start !important; }
     .ab-nav-links{ display:none !important; }
     .ab-burger{ display:flex !important; }
   }
-  @container (max-width: 480px){
-    .ab-grid [style*="minmax(120px, 180px) 1fr"]{ grid-template-columns:1fr !important; }
-    .ab-k{ padding-bottom:0 !important; }
-    .ab-v{ padding-top:6px !important; }
+  @container (max-width: 620px){
+    .ab-rows{ grid-template-columns:1fr !important; }
+  }
+  @container (max-width: 420px){
+    .ab-rows > div{ grid-template-columns:1fr !important; row-gap:4px !important; }
   }
 </style>
 <script src="transitions.js"></script>
@@ -70,75 +71,52 @@
         <div style="font-size:13px; letter-spacing:.22em; text-transform:uppercase; color:var(--eyebrow); font-weight:600;">Nice to meet you</div>
       </div>
 
-      <div class="ab-grid" style="display:grid; grid-template-columns:minmax(0,440px) 1fr; gap:clamp(36px,5cqi,68px); align-items:start;">
+      <div class="ab-grid" style="display:grid; grid-template-columns:minmax(0,420px) 1fr; gap:clamp(36px,5cqi,68px); align-items:center;">
 
-        <!-- left: photo + blurb -->
-        <div>
-          <div class="reveal" style="aspect-ratio:4/5; border-radius:clamp(18px,2.2cqi,26px); overflow:hidden; background:var(--hover); box-shadow:0 16px 40px rgba(33,28,22,.14);">
-            <img src="assets/about-portrait.webp" alt="Paula Narvaez" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
-          </div>
-          <p style="font-size:clamp(14.5px,1.35cqi,16px); line-height:1.62; color:var(--muted1); margin:clamp(22px,2.6cqi,30px) 0 14px;">My background in architecture gave me a systems lens, how things connect, where they break, and how to build them to last. That's still how I design.</p>
-          <p style="font-size:clamp(14.5px,1.35cqi,16px); line-height:1.62; color:var(--muted1); margin:0 0 14px;">Most recently at Meta, working on some of the hardest problems in social media: feed controls, design systems, teen safety, privacy at scale.&nbsp;</p>
-          <p style="font-size:clamp(14.5px,1.35cqi,16px); line-height:1.62; color:var(--muted1); margin:0;">I'm the designer you bring in for the hard problems. I like complex. I like cross-functional. I care deeply about craft, about the people I build with, and about making things that work for all users.</p><div><div></div><div></div></div><p></p>
+        <!-- left: photo -->
+        <div class="reveal" style="aspect-ratio:4/5; border-radius:clamp(18px,2.2cqi,26px); overflow:hidden; background:var(--hover); box-shadow:0 16px 40px rgba(33,28,22,.14);">
+          <img src="assets/about-portrait.webp" alt="Paula Narvaez" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
         </div>
 
-        <!-- right: rows + tags -->
+        <!-- right: spiel -->
         <div>
-          <div style="display:grid; grid-template-columns:minmax(120px,180px) 1fr; column-gap:clamp(20px,3cqi,40px);">
-            <div style="grid-column:1 / -1; border-top:1px solid var(--border);"></div>
-            <div class="ab-k" style="padding:clamp(16px,2cqi,22px) 0; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Based in</div>
-            <div class="ab-v" style="padding:clamp(16px,2cqi,22px) 0; font-size:14px; line-height:1.4; color:var(--text);">New York City</div>
+          <p style="font-size:clamp(15px,1.5cqi,17px); line-height:1.66; color:var(--muted1); margin:0 0 18px;">My background in architecture gave me a systems lens, how things connect, where they break, and how to build them to last. That's still how I design.</p>
+          <p style="font-size:clamp(15px,1.5cqi,17px); line-height:1.66; color:var(--muted1); margin:0 0 18px;">Most recently at Meta, working on some of the hardest problems in social media: feed controls, design systems, teen safety, privacy at scale.</p>
+          <p style="font-size:clamp(15px,1.5cqi,17px); line-height:1.66; color:var(--muted1); margin:0;">I'm the designer you bring in for the hard problems. I like complex. I like cross-functional. I care deeply about craft, about the people I build with, and about making things that work for all users.</p>
+        </div>
+      </div>
 
-            <div style="grid-column:1 / -1; border-top:1px solid var(--border);"></div>
-            <div class="ab-k" style="padding:clamp(16px,2cqi,22px) 0; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Previously</div>
-            <div class="ab-v" style="padding:clamp(16px,2cqi,22px) 0; font-size:14px; line-height:1.4; color:var(--text);">Meta · Google · Dolby · Startups</div>
-
-            <div style="grid-column:1 / -1; border-top:1px solid var(--border);"></div>
-            <div class="ab-k" style="padding:clamp(16px,2cqi,22px) 0; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Domain expertise</div>
-            <div class="ab-v" style="padding:clamp(16px,2cqi,22px) 0; font-size:14px; line-height:1.4; color:var(--text);">Consumer product · Design systems · Trust &amp; safety · Youth design · Settings &amp; controls</div>
-
-            <div style="grid-column:1 / -1; border-top:1px solid var(--border);"></div>
-            <div class="ab-k" style="padding:clamp(16px,2cqi,22px) 0; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Background</div>
-            <div class="ab-v" style="padding:clamp(16px,2cqi,22px) 0; font-size:14px; line-height:1.4; color:var(--text);">M. Landscape Architecture, UPenn ·&nbsp;<div>B. Architecture, USC </div></div>
-
-            <div style="grid-column: 1 / -1; border-top: 1px solid var(--border); display: none"></div>
-            <div class="ab-k" style="padding: clamp(16px,2cqi,22px) 0; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted4); font-weight: 600; display: none">Off the clock</div>
-            <div class="ab-v" style="padding: clamp(16px,2cqi,22px) 0; font-size: 14px; line-height: 1.4; color: var(--text); display: none">Reality TV · Pop culture · Urbanism · Kandi making · Music festivals · Mentoring</div>
-
-            <div style="grid-column: 1 / -1; border-top: 1px solid var(--border); display: none"></div>
-            <div class="ab-k" style="padding: clamp(16px,2cqi,22px) 0; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted4); font-weight: 600; display: none">Also me</div>
-            <div class="ab-v" style="padding: clamp(16px,2cqi,22px) 0; font-size: 14px; line-height: 1.4; color: var(--text); display: none">Always planning my next Tokyo trip</div>
-
-            <div style="grid-column: 1 / -1; border-top: 1px solid var(--border); display: none"></div>
-            <div class="ab-k" style="padding: clamp(16px,2cqi,22px) 0; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted4); font-weight: 600; display: none">Current obsession</div>
-            <div class="ab-v" style="padding: clamp(16px,2cqi,22px) 0; font-size: 14px; line-height: 1.4; color: var(--text); display: none">Playing “In Konbini” on PS5</div>
-
-            <div style="grid-column:1 / -1; border-top:1px solid var(--border);"></div>
-            <div class="ab-k" style="padding:clamp(16px,2cqi,22px) 0; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">LISTENING TO</div>
-            <div class="ab-v" style="padding:clamp(16px,2cqi,22px) 0; font-size:14px; line-height:1.4; color:var(--text);">
-              <iframe title="Feel electronic collection on Spotify" style="border-radius:12px; border:0; display:block; max-width:420px;" src="https://open.spotify.com/embed/playlist/3p2eWd2eShcFTUQzfxDrF6?utm_source=generator&amp;theme=0&amp;si=7ccfe6d88aff455a" width="100%" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-
-            <div style="grid-column:1 / -1; border-top:1px solid var(--border);"></div>
-          </div>
-
-          <div style="margin-top:clamp(26px,3.4cqi,38px);">
-            <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600; margin-bottom:16px;">How colleagues describe me</div>
-            <div style="display:flex; flex-wrap:wrap; gap:10px;">
-              <span style="border:1px solid var(--border); border-radius:100px; padding:9px 17px; font-size:14px; color:var(--muted2);">Systems thinker</span>
-              <span style="border:1px solid var(--border); border-radius:100px; padding:9px 17px; font-size:14px; color:var(--muted2);">Calm under pressure</span>
-              <span style="border:1px solid var(--border); border-radius:100px; padding:9px 17px; font-size:14px; color:var(--muted2);">Ships what she designs</span>
-              <span style="border:1px solid var(--border); border-radius:100px; padding:9px 17px; font-size:14px; color:var(--muted2);">Cross-functional glue</span>
-              <span style="border:1px solid var(--border); border-radius:100px; padding:9px 17px; font-size:14px; color:var(--muted2);">Fun to work with</span>
-              <span style="border:1px solid var(--border); border-radius:100px; padding:9px 17px; font-size:14px; color:var(--muted2);">Dependable</span>
-            </div>
-          </div>
+      <!-- tidbit cells -->
+      <div class="ab-rows" style="margin-top:clamp(34px,4.5cqi,58px); display:grid; grid-template-columns:repeat(2,1fr); column-gap:clamp(28px,4cqi,64px);">
+        <div style="border-top:1px solid var(--border); padding:clamp(16px,2cqi,22px) 0; display:grid; grid-template-columns:minmax(110px,150px) 1fr; column-gap:clamp(16px,2cqi,28px); align-items:baseline;">
+          <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Based in</div>
+          <div style="font-size:14px; line-height:1.4; color:var(--text);">New York City</div>
+        </div>
+        
+        <div style="border-top:1px solid var(--border); padding:clamp(16px,2cqi,22px) 0; display:grid; grid-template-columns:minmax(110px,150px) 1fr; column-gap:clamp(16px,2cqi,28px); align-items:baseline;">
+          <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Domain expertise</div>
+          <div style="font-size:14px; line-height:1.4; color:var(--text);">Consumer product · Design systems · Trust &amp; safety · Settings &amp; controls ·&nbsp;Youth design</div>
+        </div><div style="border-top:1px solid var(--border); padding:clamp(16px,2cqi,22px) 0; display:grid; grid-template-columns:minmax(110px,150px) 1fr; column-gap:clamp(16px,2cqi,28px); align-items:baseline;">
+          <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Previously</div>
+          <div style="font-size:14px; line-height:1.4; color:var(--text);">Meta · Google · Dolby · Startups</div>
+        </div>
+        <div style="border-top: 1px solid var(--border); padding: clamp(16px,2cqi,22px) 0; display: grid; grid-template-columns: minmax(110px,150px) 1fr; column-gap: clamp(16px,2cqi,28px); align-items: baseline">
+          <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Background</div>
+          <div style="font-size:14px; line-height:1.4; color:var(--text);">M. Landscape Architecture, UPenn · B. Architecture, USC</div>
+        </div>
+        <div style="border-top: 1px solid var(--border); padding: clamp(16px,2cqi,22px) 0; display: none; grid-template-columns: minmax(110px,150px) 1fr; column-gap: clamp(16px,2cqi,28px); align-items: start">
+          <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Listening to</div>
+          <div style="font-size:14px; line-height:1.4; color:var(--text);"><iframe title="Feel electronic collection on Spotify" style="border-radius:12px; border:0; display:block; max-width:420px;" src="https://open.spotify.com/embed/playlist/3p2eWd2eShcFTUQzfxDrF6?utm_source=generator&amp;theme=0&amp;si=7ccfe6d88aff455a" width="100%" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+        </div>
+        <div style="border-top: 1px solid var(--border); padding: clamp(16px,2cqi,22px) 0; display: none; grid-template-columns: minmax(110px,150px) 1fr; column-gap: clamp(16px,2cqi,28px); align-items: baseline">
+          <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Off the clock</div>
+          <div style="font-size:14px; line-height:1.4; color:var(--text);">Reality TV · Pop culture · Urban Walks · Music festivals · Community making ·&nbsp;Mentoring</div>
         </div>
       </div>
     </div>
 
     <!-- footer -->
-    <div style="padding:clamp(22px,3cqi,28px) clamp(24px,5cqi,60px); border-top:1px solid var(--border); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:14px; color:var(--muted3);">
+    <div style="padding: clamp(22px,3cqi,28px) clamp(24px,5cqi,60px); border-top: 1px solid var(--border); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--muted3)">
       <span>˚₊‧ Tid bits ‧₊˚</span>
       <span style="display:flex; gap:24px;"><a class="navlink" href="https://www.linkedin.com/in/paulanarvaez/" target="_blank" rel="noopener">LinkedIn</a><a class="navlink" href="mailto:paula.narv@gmail.com">Email</a><a class="navlink" href="https://x.com/paulanarv" target="_blank" rel="noopener">@paulanarv</a></span>
     </div>
