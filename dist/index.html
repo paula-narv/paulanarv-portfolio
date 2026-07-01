@@ -21,6 +21,8 @@
   .brow{ transition:background .2s ease; }
   .brow:hover{ background:var(--hover) !important; }
   .brow:hover .r-title{ color:var(--accent) !important; }
+  .idx-preview{ transition:transform .25s ease, box-shadow .25s ease; }
+  .idx-preview:hover{ transform:translateY(-4px); box-shadow:0 22px 50px rgba(33,28,22,.2) !important; }
   /* ---- theme tokens (light = default for the home) ---- */
   .theme-root{ --bg:#e2ddd2; --surface:#f6f1e9; --surface-hi:#fffdf9; --surface-lo:#faf7f0; --text:#211c16; --border:#e7ddca; --eyebrow:#a8927a; --muted1:#4a4238; --muted2:#544c41; --muted3:#6b6258; --muted4:#9a9081; --muted5:#a89e8d; --label:#3a342b; --hover:#f0e7d6; transition:background .35s ease; }
   .theme-root[data-theme="dark"]{ --bg:#161310; --surface:#1e1914; --surface-hi:#221d17; --surface-lo:#1b1712; --text:#efe7d9; --border:#34291f; --eyebrow:#b29c84; --muted1:#c5baa9; --muted2:#bcae9c; --muted3:#a89c8b; --muted4:#8f8475; --muted5:#938878; --label:#cfc4b2; --hover:#2a241d; }
@@ -81,7 +83,7 @@
     <div style="padding:0 clamp(24px,5cqi,64px) clamp(44px,6cqi,64px);">
       <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
         <div style="font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted5); font-weight: 600">Selected work</div>
-        <div class="idx-hoverlabel" style="font-size:13px; color:var(--muted5);">Hover to preview</div>
+        
       </div>
       <div class="idx-grid" style="display:grid; grid-template-columns:minmax(0,1fr) clamp(300px,32cqi,440px); gap:clamp(28px,4cqi,48px); align-items:start;">
         <div>
@@ -91,9 +93,9 @@
               <div class="r-title" style="font-family:'Instrument Serif',serif; font-size:clamp(26px,3.6cqi,40px); line-height:1.02;">{{ row.title }}</div>
             </a>
           </sc-for>
-          <div style="border-top:1px solid var(--border);"></div>
+          
         </div>
-        <div class="idx-preview" style="position:sticky; top:clamp(20px,3vw,40px); border-radius:clamp(20px,2.4cqi,28px); overflow:hidden; background:var(--surface-hi); box-shadow:0 14px 36px rgba(33,28,22,.14);">
+        <a class="idx-preview" href="{{ previewHref }}" style="display:block; position:sticky; top:clamp(20px,3vw,40px); border-radius:clamp(20px,2.4cqi,28px); overflow:hidden; background:var(--surface-hi); box-shadow:0 14px 36px rgba(33,28,22,.14); cursor:pointer;">
           <div style="aspect-ratio:4/3; overflow:hidden; background:var(--hover);">
             <img src="{{ previewImg }}" alt="preview" style="width:100%; height:100%; object-fit:cover; display:block;">
           </div>
@@ -102,7 +104,7 @@
             <div style="font-family:'Instrument Serif',serif; font-size:clamp(22px,2.4cqi,28px); line-height:1.08; margin-bottom:10px;">{{ previewTitle }}</div>
             <div style="font-size:clamp(13.5px,1.3cqi,15px); line-height:1.5; opacity:.94;">{{ previewDesc }}</div>
           </div>
-        </div>
+        </a>
       </div>
 
       <!-- mobile: full tappable cards (replaces hover-preview on touch) -->
@@ -178,6 +180,7 @@ class Component extends DCLogic {
       closeMenu: () => this.setState({ menuOpen: false }),
       indexList: w.map((it,i)=>({ ...it, num:String(i+1).padStart(2,'0'), href: it.href || '#', onHover:()=>this.setState({hovered:i}) })),
       previewImg: hov.img,
+      previewHref: hov.href || '#',
       previewTitle: hov.title,
       previewCo: hov.meta,
       previewDesc: hov.desc,

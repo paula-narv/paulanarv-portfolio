@@ -25,8 +25,8 @@
   .seg{ transition:background .2s ease, color .2s ease; }
   .theme-root:not([data-theme="dark"]) .seg-light{ background:var(--text); color:var(--bg); }
   .theme-root[data-theme="dark"] .seg-dark{ background:var(--text); color:var(--bg); }
-  .crow{ transition:padding-left .25s ease, border-color .2s ease; }
-  .crow:hover{ padding-left:14px !important; border-color:var(--text) !important; }
+  .crow{ transition:background .2s ease; }
+  .crow:hover{ background:var(--hover) !important; }
   .crow:hover .c-arrow{ transform:translateX(6px); color:var(--text) !important; }
   .c-arrow{ transition:transform .25s ease, color .2s ease; }
   .crow:hover .c-val{ color:var(--text) !important; }
@@ -66,25 +66,25 @@
     <!-- center -->
     <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:clamp(40px,6cqi,84px) clamp(24px,5cqi,60px);">
       <div style="max-width:880px;">
-        <div style="display:flex; align-items:center; gap:14px; margin-bottom:clamp(20px,2.6cqi,30px);">
-          <div style="width:34px; height:1.5px; background:var(--eyebrow);"></div>
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:16px;">
+          <div style="width: 34px; height: 1.5px; background: var(--eyebrow); display: none"></div>
           <div style="font-size:13px; letter-spacing:.22em; text-transform:uppercase; color:var(--eyebrow); font-weight:600;">Get in touch</div>
         </div>
-        <h1 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(58px,10cqi,128px); line-height:0.95; letter-spacing:-.015em; margin:0 0 clamp(22px,2.6cqi,30px);">Let's talk.</h1>
+        <h1 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(58px,10cqi,128px); line-height:0.95; letter-spacing:-.015em; margin:0 0 clamp(22px,2.6cqi,30px);">Let's talk</h1>
         <p style="font-size: clamp(16px,1.5cqi,19px); line-height: 1.55; color: var(--muted2); max-width: 620px; margin: 0 0 clamp(36px,4.5cqi,56px); display: none">I'm currently open to Senior and Staff Product Designer roles. If you're building something that needs a systems thinker who ships, I'd love to hear about it.</p>
 
         <div style="max-width:760px;">
-          <a class="crow" href="mailto:paula.narv@gmail.com" style="display:grid; grid-template-columns:minmax(120px,170px) 1fr auto; align-items:baseline; gap:clamp(16px,3cqi,40px); padding:clamp(20px,2.6cqi,28px) 0; border-top:1px solid var(--border);">
+          <a class="crow" href="mailto:paula.narv@gmail.com" style="display:grid; grid-template-columns:minmax(120px,170px) 1fr auto; align-items:baseline; gap:clamp(16px,3cqi,40px); padding:clamp(18px,2.4cqi,24px) clamp(12px,1.6cqi,18px); border-top:1px solid var(--border); border-radius:18px;">
             <div class="c-key" style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Email</div>
             <div class="c-val" style="font-family:'Instrument Serif',serif; font-size:clamp(24px,3cqi,36px); line-height:1.05; color:var(--muted1);">paula.narv@gmail.com</div>
             <div class="c-arrow" style="font-size:clamp(22px,2.4cqi,30px); color:var(--muted4);">↗</div>
           </a>
-          <a class="crow" href="https://www.linkedin.com/in/paulanarvaez/" target="_blank" rel="noopener" style="display:grid; grid-template-columns:minmax(120px,170px) 1fr auto; align-items:baseline; gap:clamp(16px,3cqi,40px); padding:clamp(20px,2.6cqi,28px) 0; border-top:1px solid var(--border);">
+          <a class="crow" href="https://www.linkedin.com/in/paulanarvaez/" target="_blank" rel="noopener" style="display:grid; grid-template-columns:minmax(120px,170px) 1fr auto; align-items:baseline; gap:clamp(16px,3cqi,40px); padding:clamp(18px,2.4cqi,24px) clamp(12px,1.6cqi,18px); border-top:1px solid var(--border); border-radius:18px;">
             <div class="c-key" style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">LinkedIn</div>
             <div class="c-val" style="font-family:'Instrument Serif',serif; font-size:clamp(24px,3cqi,36px); line-height:1.05; color:var(--muted1);">in/paulanarvaez</div>
             <div class="c-arrow" style="font-size:clamp(22px,2.4cqi,30px); color:var(--muted4);">↗</div>
           </a>
-          <a class="crow" href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener" style="display:grid; grid-template-columns:minmax(120px,170px) 1fr auto; align-items:baseline; gap:clamp(16px,3cqi,40px); padding:clamp(20px,2.6cqi,28px) 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+          <a class="crow" href="https://drive.google.com/file/d/1y3C0lbZy9JevKY5ZELNaqGJTuvCPjsly/view?usp=drive_link" target="_blank" rel="noopener" style="display:grid; grid-template-columns:minmax(120px,170px) 1fr auto; align-items:baseline; gap:clamp(16px,3cqi,40px); padding:clamp(18px,2.4cqi,24px) clamp(12px,1.6cqi,18px); border-top:1px solid var(--border); border-radius:18px;">
             <div class="c-key" style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted4); font-weight:600;">Résumé</div>
             <div class="c-val" style="font-family:'Instrument Serif',serif; font-size:clamp(24px,3cqi,36px); line-height:1.05; color:var(--muted1);">Download PDF</div>
             <div class="c-arrow" style="font-size:clamp(22px,2.4cqi,30px); color:var(--muted4);">↗</div>
