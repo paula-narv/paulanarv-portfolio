@@ -164,17 +164,17 @@ class Component extends DCLogic {
   step(d){ const n = this.data.length; this.setState(s => ({ open: ((s.open + d) % n + n) % n })); }
   get data(){
     const T = {
-      sculpt:  ['3D Sculpt',   'Blender · ZBrush',         'A character study modeled and lit in 3D — playing with form, fur, and texture.'],
-      build:   ['Build',       'Hand-built · found materials','A weekend build — making something physical with my hands for a change.'],
-      charcoal:['Charcoal',    'Charcoal on newsprint',    'Figure studies in charcoal — fast, loose, and all about the gesture.'],
+      sculpt:  ['3D Sculpt',   'Blender · ZBrush',         'A character study modeled and lit in 3D, playing with form, fur, and texture.'],
+      build:   ['Build',       'Hand-built · found materials','A weekend build, making something physical with my hands for a change.'],
+      charcoal:['Charcoal',    'Charcoal on newsprint',    'Figure studies in charcoal, fast, loose, and all about the gesture.'],
       mixed:   ['Mixed Media', 'Mixed media',              'A mixed-media piece, layering materials until it felt right.'],
-      pen:     ['Pen',         'Ink pen',                  'An architecture sketch in pen — old studio habits I never quite dropped.'],
-      pencil:  ['Pencil',      'Graphite',                 'A graphite study — slowing down to really look at something.'],
-      photo:   ['Photography', '35mm / digital',           'A frame from the road — shot while traveling, looking up.'],
-      digital: ['Digital',     'Photoshop',                'Made in Photoshop — mapping, rendering, and visual systems, for fun.'],
-      trash:   ['Trashion',    'Reclaimed festival waste', 'Trashed Coachella — wearable art built entirely from festival waste.'],
+      pen:     ['Pen',         'Ink pen',                  'An architecture sketch in pen, old studio habits I never quite dropped.'],
+      pencil:  ['Pencil',      'Graphite',                 'A graphite study, slowing down to really look at something.'],
+      photo:   ['Photography', '35mm / digital',           'A frame from the road, shot while traveling, looking up.'],
+      digital: ['Digital',     'Photoshop',                'Made in Photoshop, mapping, rendering, and visual systems, for fun.'],
+      trash:   ['Trashion',    'Reclaimed festival waste', 'Trashed Coachella, wearable art built entirely from festival waste.'],
       ux:      ['UX',          'Figma',                    'A self-directed UX project, designed end to end for the joy of it.'],
-      illo:    ['Illustration','Illustrator · Photoshop',  'A character avatar — an Animal Crossing–style self-portrait, drawn just for fun.'],
+      illo:    ['Illustration','Illustrator · Photoshop',  'A character avatar, an Animal Crossing–style self-portrait, drawn just for fun.'],
     };
     const mk = (file, k, title) => ({ img:'assets/play/'+file, kind:T[k][0], tools:T[k][1], desc:T[k][2], title });
     return [
@@ -210,7 +210,7 @@ class Component extends DCLogic {
       mk('photo-beehive.avif','photo','Beehive'),
       mk('ux-ravefam-03.jpg','ux','RaveFam II'),
       mk('pen-fisher-library-napkin.avif','pen','Fisher Library, on a Napkin'),
-      mk('ux-grown-redesign.avif','ux','Grown — Redesign'),
+      mk('ux-grown-redesign.avif','ux','Grown, Redesign'),
       mk('photo-cape-coast-03.avif','photo','Cape Coast III'),
       mk('ux-ravefam-01.webp','ux','RaveFam III'),
       mk('ps-rendering-03.avif','digital','Rendering III'),
