@@ -42,7 +42,7 @@
 <script src="transitions.js"></script>
 </helmet>
 
-<div class="theme-root" data-theme="{{ theme }}" style="min-height:100vh; background:var(--bg); font-family:'Hanken Grotesk',sans-serif; display:flex; justify-content:center; align-items:flex-start; padding:clamp(20px,3.5vw,56px);">
+<div class="theme-root" data-theme="{{ theme }}" style="min-height:100vh; background:var(--bg); font-family:'Hanken Grotesk',sans-serif; display:flex; justify-content:center; align-items:flex-start; padding:clamp(12px,2vw,28px);">
 
   <div data-screen-label="About" style="container-type:inline-size; width:100%; max-width:1480px; background:var(--surface-lo); border-radius:clamp(20px,2.2cqi,32px); box-shadow:0 1px 3px rgba(0,0,0,.12); overflow:hidden; color:var(--text);">
 
@@ -127,7 +127,7 @@
 
   <!-- mobile menu overlay -->
   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed; inset:clamp(20px,3.5vw,56px); z-index:300; border-radius:clamp(20px,2.2vw,32px); background:var(--bg); color:var(--text); container-type:inline-size; overflow:hidden; display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
+    <div style="position:fixed; inset:clamp(12px,2vw,28px); z-index:300; border-radius:clamp(20px,2.2vw,32px); background:var(--bg); color:var(--text); container-type:inline-size; overflow:hidden; display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
       <div style="display:flex; justify-content:space-between; align-items:center; padding:clamp(22px,3cqi,30px) clamp(24px,5cqi,60px);">
         <div style="display:flex; align-items:center; gap:10px;">
           
