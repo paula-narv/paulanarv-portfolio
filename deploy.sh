@@ -55,7 +55,13 @@ print(f"    repointed {total} résumé link(s)")
 PY
 
 # ---- Fix 3: swap in the correct (pre-AI-layer) 3DM options image ----
-echo "==> Swapping in the correct 3DM options image"
+# Report whether the export was already correct (so you know if your
+# Claude Design source-fix is holding) before we enforce the correct file.
+if cmp -s "$IMG_SRC" "$NEW/$LOCAL_IMG" 2>/dev/null; then
+  echo "==> 3DM image already correct in export — Claude Design source-fix is HOLDING ✅"
+else
+  echo "==> 3DM image was STALE in export — swapping in the correct version (source-fix not holding yet)"
+fi
 cp "$IMG_SRC" "$NEW/$LOCAL_IMG"
 
 # ---- Sync into the repo's dist (preserve .vercel + .gitignore, skip .DS_Store) ----
