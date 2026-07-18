@@ -120,27 +120,6 @@
           <div style="padding:0 40px; border-left:1px solid #22364a;"><div style="font-size:clamp(44px,6cqi,80px); font-weight:800; letter-spacing:-.02em; line-height:1;">70%</div><div style="font-size:15px; color:#94a1b2; margin-top:14px;">Of the half's pattern improvements</div></div>
         </div>
         <sc-if value="{{ showImpactContext }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px; line-height:1.55; color:#7c8ba0; margin-top:34px; padding-top:24px; border-top:1px solid #22364a; max-width:780px;">Within the broader Blueprint patterns practice, 60+ pattern packages across 15+ types, the component quality-check pass rate climbed from 10% to 95%.</div></sc-if>
-      </div><div style="background:#0d1b2a; padding:22px 48px 22px;">
-        <div class="bp-compare" style="position:relative; border:1px solid #22364a; border-radius:18px; overflow:hidden; background:#0a1622; aspect-ratio:2880/1200; cursor:ew-resize; touch-action:none; user-select:none;">
-          <!-- base layer: AFTER -->
-          <img src="assets/bp-bottomsheet-after-v2.png" alt="After, bottom sheets unified to a single consistent pattern across Facebook surfaces" draggable="false" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
-          <!-- top layer: BEFORE, clipped -->
-          <div style="position:absolute; inset:0; clip-path: {{ revealClip }};">
-            <img src="assets/bp-bottomsheet-before-v2.png" alt="Before, inconsistent, independently-built bottom sheets across Facebook surfaces" draggable="false" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
-          </div>
-          <div style="position:absolute; top:16px; left:16px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#fff; background:rgba(10,22,34,.78); border:1px solid rgba(255,255,255,.14); padding:6px 12px; border-radius:100px; pointer-events:none;">Before · inconsistent</div>
-          <div style="position:absolute; top:16px; right:16px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#0a1622; background:#7c8cff; padding:6px 12px; border-radius:100px; pointer-events:none;">After · Unified pattern</div>
-          <div style="position:absolute; top:0; bottom:0; left: {{ dividerLeft }}; width:2px; background:#7c8cff; pointer-events:none; transform:translateX(-1px);">
-            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:42px; height:42px; border-radius:50%; background:#7c8cff; box-shadow:0 4px 16px rgba(0,0,0,.4); display:flex; align-items:center; justify-content:center;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 7l-4 5 4 5M15 7l4 5-4 5" stroke="#0a1622" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            </div>
-          </div>
-          <input type="range" min="0" max="100" step="0.1" value="{{ reveal }}" onInput="{{ onReveal }}" aria-label="Drag to compare before and after" style="position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:ew-resize;">
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:16px 0 4px;">
-          <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">A sample of the sprawl, mismatched titles, nav, spacing, and transitions on the left; one pattern on the right. The guidelines and framework I built gave teams a single bottom sheet to reach for, and later unblocked GenAI work that had stalled waiting on the guidance.</div>
-          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">Bottom sheet · drag before → after</div>
-        </div>
       </div>
 
       <!-- 01 overview -->
@@ -164,7 +143,7 @@
         <div></div>
         <div style="border-left:3px solid #4a59c4; padding-left:26px;">
           <div style="font-family:'Instrument Serif',serif; font-size:58px; line-height:1; color:var(--text);">50+</div>
-          <div style="font-size:16px; color:var(--muted3); margin-top:10px;">existing bottom sheets audited.</div>
+          <div style="font-size:16px; color:var(--muted3); margin-top:10px;">bottom sheets built independently across Feed, Reels, Messaging, and Marketplace, with no shared reference and no record of the decisions behind them.</div>
         </div>
       </div>
 
@@ -177,29 +156,49 @@
           <div style="font-family:'Instrument Serif',serif; font-style:italic; font-size:26px; line-height:1.4; color:var(--text);">"The question wasn't how a bottom sheet should look. It was when a bottom sheet is even the right container."</div>
         </div>
       </div>
-      <div style="background:#0d1b2a; color:#fff; padding:44px 48px 36px;">
-        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">Anatomy of a pattern</div>
-        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.1; margin:0; max-width:800px;">A pattern isn't a screen, it's a set of specced components, and the rules for how they fit together.</h2>
-      </div><div style="background:#0d1b2a;">
-        <img src="assets/bp-bottomsheet-layers.jpg" alt="A bottom sheet decomposed into its container layers, bottom sheet, screen overlay, product surface (Groups), and base" style="width:100%; height:auto; display:block;"><div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
+      <div style="background:#0d1b2a;">
+        <img src="assets/bp-bottomsheet-layers.jpg" alt="A bottom sheet decomposed into its container layers, bottom sheet, screen overlay, product surface (Groups), and base" style="width:100%; height:auto; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
           <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">A bottom sheet is a container stack, not a single screen: base, product surface, screen overlay, and the sheet itself. Naming those layers is what let one decision, when to use a sheet, apply consistently across every surface.</div>
           <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">Bottom sheet · container anatomy</div>
-        </div>
-        
-      </div><div style="background:#0d1b2a;">
-        <img src="assets/bp-people-picker-bs-anatomy.jpg" alt="The People Picker bottom sheet decomposed into its specced main components, navigation bar, search bar, contextual message, unit header, profile h-scroll, selection cell table, persistent CTA, and home affordance" style="width:100%; height:auto; display:block;">
-        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
-          <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">The People Picker bottom sheet, decomposed: each region maps to a reusable main component with its own redlines, tokens, and accessibility annotations. Document the pieces and the relationships once, and any team can assemble the whole correctly.</div>
-          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">People picker · bottom-sheet anatomy</div>
         </div>
       </div>
 
       <!-- 04 process (dark) -->
-      
-      
+      <div style="background:#0d1b2a; color:#fff; padding:72px 48px 40px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">04 · The process</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 24px; max-width:820px;">Before I changed anything, I audited everything.</h2>
+        <p style="font-size:17px; line-height:1.62; color:#94a1b2; max-width:760px; margin:0 0 18px;">I audited <strong style="color:#fff; font-weight:600;">50+ existing sheets</strong>, surfacing mismatched heights, nav, and transitions, and recommended reserving bottom sheets for high-focus tasks, routing lower-priority ones to contextual menus.</p>
+        <p style="font-size:17px; line-height:1.62; color:#94a1b2; max-width:760px; margin:0;">Then I gave the workstream structure: a universal design brief, an H1 plan, and a rolling research study that replaced gut-instinct calls with data. Engineering hardened the component; a motion designer and I standardized its transitions, every change validated by research.</p>
+      </div>
+      <div style="background:#0d1b2a; padding:22px 48px 22px;">
+        <div class="bp-compare" style="position:relative; border:1px solid #22364a; border-radius:18px; overflow:hidden; background:#0a1622; aspect-ratio:2880/1200; cursor:ew-resize; touch-action:none; user-select:none;">
+          <!-- base layer: AFTER -->
+          <img src="assets/bp-bottomsheet-after-v2.png" alt="After, bottom sheets unified to a single consistent pattern across Facebook surfaces" draggable="false" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+          <!-- top layer: BEFORE, clipped -->
+          <div style="position:absolute; inset:0; clip-path: {{ revealClip }};">
+            <img src="assets/bp-bottomsheet-before-v2.png" alt="Before, inconsistent, independently-built bottom sheets across Facebook surfaces" draggable="false" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <div style="position:absolute; top:16px; left:16px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#fff; background:rgba(10,22,34,.78); border:1px solid rgba(255,255,255,.14); padding:6px 12px; border-radius:100px; pointer-events:none;">Before · inconsistent</div>
+          <div style="position:absolute; top:16px; right:16px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#0a1622; background:#7c8cff; padding:6px 12px; border-radius:100px; pointer-events:none;">After · Unified pattern</div>
+          <div style="position:absolute; top:0; bottom:0; left: {{ dividerLeft }}; width:2px; background:#7c8cff; pointer-events:none; transform:translateX(-1px);">
+            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:42px; height:42px; border-radius:50%; background:#7c8cff; box-shadow:0 4px 16px rgba(0,0,0,.4); display:flex; align-items:center; justify-content:center;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 7l-4 5 4 5M15 7l4 5-4 5" stroke="#0a1622" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+          </div>
+          <input type="range" min="0" max="100" step="0.1" value="{{ reveal }}" onInput="{{ onReveal }}" aria-label="Drag to compare before and after" style="position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:ew-resize;">
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:16px 0 4px;">
+          <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">A sample of the sprawl, mismatched titles, nav, spacing, and transitions on the left; one pattern on the right. The guidelines and framework I built gave teams a single bottom sheet to reach for, and later unblocked GenAI work that had stalled waiting on the guidance.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">Bottom sheet · drag before → after</div>
+        </div>
+      </div>
 
       <!-- spec (dark) -->
-      
+      <div style="background:#0d1b2a; color:#fff; padding:44px 48px 30px;">
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.1; margin:0 0 16px; max-width:780px;">So I specced it, down to the token.</h2>
+        <p style="font-size:17px; line-height:1.6; color:#94a1b2; max-width:740px; margin:0;">Every variant mapped to a named component, every gap to a spacing token, every string to a type style, rigorous enough for a partner team to pick up and ship without me in the room.</p>
+      </div>
       <div style="background:#0d1b2a;">
         <img src="assets/bp-bottomsheet-examples.jpg" alt="Two annotated bottom-sheet examples, a list-style sheet and an expressive-icon sheet, mapped to their components (bottom sheet header, text pairing, list cell group, selection cell, button, container), spacing tokens (12DP MED, 8DP SMALL), and type styles (TEXT/HEADLINE 3 EMPHASIZED, TEXT/BODY 3, TEXT/HEADLINE 4)" style="width:100%; height:auto; display:block;">
         <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
@@ -209,13 +208,38 @@
       </div>
 
       <!-- anatomy of a pattern -->
-      
-      
+      <div style="background:#0d1b2a; color:#fff; padding:44px 48px 36px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">Anatomy of a pattern</div>
+        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.1; margin:0; max-width:800px;">A pattern isn't a screen, it's a set of specced components, and the rules for how they fit together.</h2>
+      </div>
+      <div style="background:#0d1b2a;">
+        <img src="assets/bp-people-picker-bs-anatomy.jpg" alt="The People Picker bottom sheet decomposed into its specced main components, navigation bar, search bar, contextual message, unit header, profile h-scroll, selection cell table, persistent CTA, and home affordance" style="width:100%; height:auto; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
+          <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">The People Picker bottom sheet, decomposed: each region maps to a reusable main component with its own redlines, tokens, and accessibility annotations. Document the pieces and the relationships once, and any team can assemble the whole correctly.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">People picker · bottom-sheet anatomy</div>
+        </div>
+      </div>
 
       <!-- 05 systems thinking / the curveball -->
-      
-      
-      
+      <div style="padding:72px 48px 40px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; padding-top:8px;">05 · Systems thinking / the curveball</div>
+        <div>
+          <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;">Then the work got a test I couldn't have planned for.</h2>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 20px;">Mid-effort, Meta AI needed something that didn't exist: a bottom sheet to disclose AI use to users. Net-new, no spec to build from, so I built it from scratch to unblock the team. It became the entry point for Meta AI transparency.</p>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">It didn't stay contained to Meta AI. It extended into my Settings &amp; Controls and Trust &amp; Safety work as the "AI Info" pattern, the AIGM Transparency Tag proposal, built to meet FTC and global disclosure requirements already active in markets like India.</p>
+        </div>
+      </div>
+      <div style="padding:0 48px 40px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div></div>
+        <div style="font-family:'Instrument Serif',serif; font-style:italic; font-size:24px; line-height:1.4; color:var(--text);">"Net-new, no spec to copy. I built the disclosure pattern from scratch, and it became the template the company-wide compliance proposal grew out of."</div>
+      </div>
+      <div style="background:#0d1b2a;">
+        <img src="assets/bp-genai-flow.jpg" alt="The Gen AI 'AI info' flow, the post's 3-dot menu, the AI info bottom sheet disclosing that content may have been created with AI, and the Meta Help Center article on identifying AI content" style="width:100%; height:auto; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 40px;">
+          <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">The net-new pattern in context: from the post's 3-dot menu into the "AI info" bottom sheet, telling users when AI may have been used, and out to the Meta Help Center. The disclosure sheet is the piece that had no prior spec; I built it from scratch to unblock Meta AI.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">Gen AI · AI info bottom sheet</div>
+        </div>
+      </div>
 
       <!-- motion reel (supporting evidence) -->
       <div style="padding:56px 48px 72px;">
@@ -271,16 +295,12 @@
       </div>
 
       <!-- 08 reflection -->
-      
-
-      <!-- extended case study CTA -->
-      <div style="padding:64px 48px; text-align:center; border-top:1px solid var(--border);">
-        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; margin-bottom:14px;">Want the full story?</div>
-        <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:34px; line-height:1.14; margin:0 0 28px; max-width:640px; margin-left:auto; margin-right:auto;">The methodology, the specs, and the system thinking, in depth.</h2>
-        <button onClick="{{ openGate }}" style="display:inline-flex; align-items:center; gap:10px; background:#4a59c4; color:#fff; border:none; border-radius:100px; padding:15px 30px; font-size:16px; font-weight:600; cursor:pointer;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6 10V8a6 6 0 0 1 12 0v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><rect x="4" y="10" width="16" height="10" rx="2.4" stroke="currentColor" stroke-width="2"></rect></svg>
-          Read the extended case study <span aria-hidden="true">→</span>
-        </button>
+      <div style="padding:40px 48px 72px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; padding-top:8px;">07 · REFLECTION</div>
+        <div>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0 0 22px;">The real throughline wasn't bottom sheets themselves, it was building decisions on evidence instead of assumption. That discipline traveled with the pattern into a domain, AI regulation, that didn't exist when I started.</p>
+          <div style="font-family:'Instrument Serif',serif; font-size:34px; line-height:1.25; color:var(--text);">The work wasn't the sheets. It was replacing assumption with evidence, and watching that standard hold.</div>
+        </div>
       </div>
 
       <!-- next -->
@@ -297,31 +317,6 @@
         <span style="display:flex; gap:22px; color:#d8cdb8;"><a href="https://www.linkedin.com/in/paulanarvaez/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:paula.narv@gmail.com">Email</a><span>@paulanarv</span></span>
       </div>
     </div>
-
-  <!-- password gate overlay -->
-  <sc-if value="{{ gateOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed; inset:0; z-index:400; background:rgba(10,8,5,.72); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; padding:24px; font-family:'Hanken Grotesk',sans-serif;">
-      <div style="width:100%; max-width:420px; background:var(--surface); border:1px solid var(--border); border-radius:22px; padding:36px 32px; color:var(--text); box-shadow:0 24px 60px rgba(0,0,0,.4);">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:18px;">
-          <div style="width:40px; height:40px; border-radius:12px; background:rgba(74,89,196,.16); display:flex; align-items:center; justify-content:center; color:#7c8cff;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 10V8a6 6 0 0 1 12 0v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><rect x="4" y="10" width="16" height="10" rx="2.4" stroke="currentColor" stroke-width="2"></rect></svg>
-          </div>
-          <button onClick="{{ closeGate }}" aria-label="Close" style="background:none; border:none; cursor:pointer; color:var(--muted3); padding:4px; margin:-4px -4px 0 0;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
-          </button>
-        </div>
-        <h3 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:27px; line-height:1.14; margin:0 0 8px;">Protected case study</h3>
-        <p style="font-size:15px; line-height:1.55; color:var(--muted3); margin:0 0 22px;">Enter the password to read the extended version. Don't have one? <a href="contact.html" style="color:#7c8cff; font-weight:600;">Request access</a>.</p>
-        <form onSubmit="{{ submitGate }}">
-          <input type="password" value="{{ gateValue }}" onInput="{{ onGateInput }}" placeholder="Password" autoFocus="{{ true }}" style="width:100%; box-sizing:border-box; background:var(--surface-lo); border:1px solid {{ gateBorder }}; border-radius:12px; padding:14px 16px; font-size:16px; color:var(--text); font-family:inherit; outline:none; margin-bottom:14px;">
-          <sc-if value="{{ gateError }}" hint-placeholder-val="{{ false }}">
-            <div style="font-size:14px; color:#8d9bff; margin:-4px 0 14px;">Incorrect password, try again.</div>
-          </sc-if>
-          <button type="submit" style="width:100%; background:#4a59c4; color:#fff; border:none; border-radius:100px; padding:15px; font-size:16px; font-weight:600; cursor:pointer; font-family:inherit;">Unlock</button>
-        </form>
-      </div>
-    </div>
-  </sc-if>
 
   <!-- mobile menu overlay -->
   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
@@ -348,10 +343,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;partnersFraming&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Named partners&quot;,&quot;Cross-functional scope&quot;,&quot;Hidden&quot;],&quot;default&quot;:&quot;Named partners&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showImpactContext&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Impact&quot;}}">
 class Component extends DCLogic {
-  state = { theme: 'dark', menuOpen: false, reveal: 50, gateOpen: false, gateValue: '', gateError: false };
-  // change this to set the password for the extended case study
-  _password = 'hireme';
-  _extendedUrl = 'blueprint-extended.html';
+  state = { theme: 'dark', menuOpen: false, reveal: 50 };
   componentDidMount(){
     try{ var t = localStorage.getItem('pn-theme-case'); if (t === 'light' || t === 'dark') this.setState({ theme: t }); }catch(e){}
     this._playVids();
@@ -363,17 +355,13 @@ class Component extends DCLogic {
   componentDidUpdate(){ this._playVids(); }
   _playVids(){ try{ document.querySelectorAll('video').forEach((v) => { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = true; v.setAttribute('muted',''); v.setAttribute('playsinline',''); var p = v.play(); if (p && p.catch) p.catch(() => {}); }); }catch(e){} }
   setTheme(t){ this.setState({ theme: t }); try{ localStorage.setItem('pn-theme-case', t); }catch(e){} }
-  _unlocked(){ try{ return sessionStorage.getItem('pn-ext-unlocked-bp') === '1'; }catch(e){ return false; } }
-  openGate(){ if (this._unlocked()){ window.location.href = this._extendedUrl; return; } this.setState({ gateOpen: true, gateValue: '', gateError: false }); }
-  closeGate(){ this.setState({ gateOpen: false }); }
-  submitGate(e){ if (e && e.preventDefault) e.preventDefault(); if (this.state.gateValue.trim().toLowerCase() === this._password){ try{ sessionStorage.setItem('pn-ext-unlocked-bp', '1'); }catch(err){} window.location.href = this._extendedUrl; } else { this.setState({ gateError: true }); } }
   renderVals(){
     var p = this.state.reveal;
     var framing = this.props.partnersFraming || 'Named partners';
     var showPartners = framing !== 'Hidden';
     var partnersLabel = 'Reach', partnersValue = '191 teams across Meta';
     if (framing === 'Cross-functional scope'){ partnersLabel = 'Scope'; partnersValue = 'Cross-functional · 15+ teams'; }
-    return { theme: this.state.theme, setLight: () => this.setTheme('light'), setDark: () => this.setTheme('dark'), menuOpen: this.state.menuOpen, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }), reveal: p, revealClip: 'inset(0 ' + (100 - p) + '% 0 0)', dividerLeft: p + '%', onReveal: (e) => this.setState({ reveal: parseFloat(e.target.value) }), showPartners: showPartners, partnersLabel: partnersLabel, partnersValue: partnersValue, showImpactContext: this.props.showImpactContext !== false, gateOpen: this.state.gateOpen, gateValue: this.state.gateValue, gateError: this.state.gateError, gateBorder: this.state.gateError ? '#7c8cff' : 'var(--border)', openGate: () => this.openGate(), closeGate: () => this.closeGate(), onGateInput: (e) => this.setState({ gateValue: e.target.value, gateError: false }), submitGate: (e) => this.submitGate(e) };
+    return { theme: this.state.theme, setLight: () => this.setTheme('light'), setDark: () => this.setTheme('dark'), menuOpen: this.state.menuOpen, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }), reveal: p, revealClip: 'inset(0 ' + (100 - p) + '% 0 0)', dividerLeft: p + '%', onReveal: (e) => this.setState({ reveal: parseFloat(e.target.value) }), showPartners: showPartners, partnersLabel: partnersLabel, partnersValue: partnersValue, showImpactContext: this.props.showImpactContext !== false };
   }
 }
 </script>
