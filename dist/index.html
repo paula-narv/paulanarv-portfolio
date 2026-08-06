@@ -93,7 +93,7 @@
         <div style="width: 34px; height: 1.5px; background: var(--muted5); display: none"></div>
         <div style="font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted5); font-weight:600;">SENIOR PRODUCT DESIGNER</div>
       </div>
-      <h1 style="font-family: 'Instrument Serif',serif; font-weight: 400; font-size: clamp(44px,6.2cqi,84px); line-height: 1.12; letter-spacing: .01em; margin: 0 0 18px; width: 100%">Turning complex systems into clear products at scale.</h1>
+      <h1 style="font-family: 'Instrument Serif',serif; font-weight: 400; font-size: clamp(44px,6.2cqi,84px); line-height: 1.05; letter-spacing: .01em; margin: 0 0 18px; width: 100%"><span style="font-size: clamp(44px, 6.2cqi, 84px); letter-spacing: 0.01em; color: var(--text);">Turning complex systems into clear products at scale.</span></h1>
       <p style="font-size: clamp(16px,1.5cqi,19px); line-height: 1.55; color: var(--muted4); max-width: 760px; margin: 0 0 6px">Previously at&nbsp;<span style="color: rgb(74, 66, 56);">Meta</span>, <span style="color: rgb(74, 66, 56);">Google</span>, <span style="color: rgb(74, 66, 56);">Dolby</span></p>
     </div>
 
@@ -182,8 +182,8 @@ class Component extends DCLogic {
   setTheme(t){ this.setState({ theme: t }); try{ localStorage.setItem('pn-theme-home', t); }catch(e){} }
   get work(){
     return [
-      { img:'assets/home-three-dot.png', meta:'Settings & Controls · Facebook', title:'Feed Post Controls', year:'2026', href:'three-dot.html', desc:'Led a four-year-stalled redesign from ambiguity to global launch, aligning 10+ teams and shipping to ~3 billion people in four months.', accent:'#d2603f' },
-      { img:'assets/home-blueprint.webp', meta:'Design Systems · Facebook', title:'Facebook Design System', year:'2022–2024', href:'blueprint.html', desc:'Unified 50+ bottom-sheet variants into one cross-platform pattern, reaching 80%+ consistency and later powering Meta\'s first AI-transparency disclosure.', accent:'#4a59c4' },
+      { img:'assets/home-three-dot.png', meta:'Settings & Controls · Facebook', title:'Feed Post Controls', year:'2026', href:'three-dot.html', desc:'Revived a four-year-stalled redesign and shipped it to ~3 billion users within 4 months.', accent:'#d2603f' },
+      { img:'assets/home-blueprint.webp', meta:'Design Systems · Facebook', title:'Facebook Design System', year:'2022–2024', href:'blueprint.html', desc:'Raised design-system quality from 10% to 95% by building reusable interaction patterns adopted across 190+ product teams.', accent:'#4a59c4' },
       { img:'assets/fifa-hero.png', meta:'Trust & Safety · Facebook', title:'FIFA Athlete Safety', year:'2026', href:'fifa.html', desc:"Designed automatic abuse protection for FIFA's highest-profile athletes on Facebook, requiring no setup from the athletes themselves.", accent:'#1f8a9c' },
       { img:'assets/home-nest.jpg', meta:'Design systems · Google', title:'Nest Renew Climate Emails', year:'2021', href:'nest.html', desc:'Built an accessible email system for Nest Renew as the sole designer, creating a scalable foundation adopted across the team.', accent:'#3f7d5a' },
       { img:'assets/home-dolby.webp', meta:'Experiential · Dolby', title:'Dolby Live Experience', year:'2020', href:'dolby.html', desc:'Designed the stage and companion app for an interactive live-music experience connecting artists and fans across TV, mobile, and web.', accent:'#b8447a' },

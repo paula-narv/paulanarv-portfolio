@@ -75,7 +75,7 @@
 <script src="transitions.js"></script>
 </helmet>
 
-<div class="theme-root" data-theme="{{ theme }}" style="min-height:100vh; background:var(--bg); font-family:'Hanken Grotesk',sans-serif; display:flex; justify-content:center; align-items:flex-start; padding:clamp(12px,2vw,28px);">
+<div class="theme-root" data-theme="dark" style="min-height:100vh; background:var(--bg); font-family:'Hanken Grotesk',sans-serif; display:flex; justify-content:center; align-items:flex-start; padding:clamp(12px,2vw,28px);">
     <div class="case-frame" style="width:100%; max-width:1180px; container-type:inline-size; background:var(--surface); border-radius:clamp(0px,1.6vw,28px); box-shadow:0 1px 3px rgba(0,0,0,.18); overflow:hidden; color:var(--text);">
 
       <!-- back bar -->
@@ -91,7 +91,7 @@
 
       <!-- hero -->
       <div style="padding:72px 48px 52px;">
-        <div style="font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:#cf5f97; margin-bottom:24px;">Case study · Dolby · Experiential + Product</div>
+        <div style="font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:#cf5f97; margin-bottom:24px;"><span style="letter-spacing: 2.08px;">Experiential + Product&nbsp;</span><span style="letter-spacing: 2.08px;">·&nbsp;</span>Dolby · Livestream</div>
         <h1 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(46px,8.4cqi,92px); line-height:0.98; letter-spacing:-.01em; margin:0 0 26px;">Dolby Live Experience</h1>
         <p style="font-family: 'Instrument Serif',serif; font-style: normal; font-size: 30px; line-height: 1.32; color: var(--muted2); margin: 0">A live-music experience bridging virtual and real, fans and artists, connected through Dolby's best picture and sound.</p>
         <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:48px; border-top:1px solid var(--border); padding-top:28px;">
@@ -112,7 +112,7 @@
       </div>
 
       <!-- NDA note -->
-      <div style="padding:54px 48px 0; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+      <div style="padding: 54px 48px 0; display: none; grid-template-columns: 0.42fr 1fr; gap: 48px">
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#cf5f97; padding-top:8px;">A note</div>
         <div style="border-left:3px solid #cf5f97; padding-left:26px;">
           <div style="font-family:'Instrument Serif',serif; font-size:26px; line-height:1.32; color:var(--text); margin-bottom:12px;">This work is under NDA.</div>
@@ -257,7 +257,7 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { theme: 'dark', menuOpen: false };
-  componentDidMount(){ try{ var t = localStorage.getItem('pn-theme-case'); if (t === 'light' || t === 'dark') this.setState({ theme: t }); }catch(e){} }
+  componentDidMount(){}
   renderVals(){ return { theme: this.state.theme, menuOpen: this.state.menuOpen, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }) }; }
 }
 </script>

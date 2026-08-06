@@ -49,7 +49,9 @@
     .case-frame [style*="px 48px"]{ padding-left:clamp(20px,5.4cqi,48px) !important; padding-right:clamp(20px,5.4cqi,48px) !important; }
     .case-frame [style*="repeat(3, 1fr)"]{ grid-template-columns:1fr !important; }
     .case-frame [style*="display: flex; gap: 24px"]{ flex-direction:column !important; }
-    .case-frame [style*="display: flex; gap: 28px"]{ flex-direction:column !important; }
+    .case-frame [style*="display: flex; gap: 28px"]{ flex-direction:column !important; align-items:center !important; }
+    .case-frame [style*="flex: 0 0 260px"]{ flex:0 0 auto !important; width:100% !important; max-width:260px !important; margin-left:auto !important; margin-right:auto !important; }
+    .case-frame [style*="flex: 0 0 260px"] > div[style*="width: 260px"]{ width:100% !important; }
     .case-frame [style*="display: flex; gap: 64px"]{ flex-direction:column !important; gap:40px !important; align-items:center !important; }
     .case-frame [style*="align-items: baseline; gap: 24px"]{ flex-direction:column !important; align-items:flex-start !important; gap:10px !important; }
     .case-frame [style*="display: flex; gap: 20px"]{ flex-wrap:wrap !important; }
@@ -94,7 +96,7 @@
 
       <!-- hero -->
       <div style="padding:84px 48px 52px;">
-        <div style="font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:#4a59c4; margin-bottom:24px;">Facebook · Patterns&nbsp;<span style="letter-spacing: 2.08px;">·</span>&nbsp;Design systems</div>
+        <div style="font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:#4a59c4; margin-bottom:24px;"><span style="letter-spacing: 2.08px;">Patterns </span><span style="letter-spacing: 2.08px;">·</span><span style="letter-spacing: 2.08px;"> </span><span style="letter-spacing: 2.08px;">FACEBOOK </span><span style="letter-spacing: 2.08px;">· </span><span style="letter-spacing: 2.08px;">DESIGN SYSTEMS</span></div>
         <h1 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(40px,6.4cqi,74px); line-height:1.03; letter-spacing:-.01em; margin:0 0 28px; max-width:1000px;">Facebook’s bottom sheets had no standard.&nbsp;<span style="font-size: clamp(40px, 6.4cqi, 74px); letter-spacing: -0.01em; color: #4A59C4; font-style: italic">I built the system that brought 82% into alignment.</span></h1>
         <p style="font-size: 19px; line-height: 1.6; color: var(--muted1); margin: 0 0 40px; width: 100%">Bottom sheets are one of Facebook's highest-impression components, and every team built them differently. I drove the unification strategy across iOS and Android, turning a fragmented interaction into an adopted cross-platform pattern - then partnered with the teams shipping on it.</p>
         <div style="display:flex; flex-direction:column; gap:15px; max-width:860px;">
@@ -115,8 +117,8 @@
       
 
       <!-- 01 overview -->
-      <div style="background:#0d1b2a; padding:52px 48px 52px;">
-        <div class="bp-compare" style="position:relative; border:1px solid #22364a; border-radius:18px; overflow:hidden; background:#0a1622; aspect-ratio:2880/1200; cursor:ew-resize; touch-action:none; user-select:none;">
+      <div style="padding: 52px 0 52px; background-color: #0D1B2A">
+        <div class="bp-compare" style="position:relative; border-top:1px solid #22364a; border-bottom:1px solid #22364a; overflow:hidden; background:#0a1622; aspect-ratio:2880/1200; cursor:ew-resize; touch-action:none; user-select:none;">
           <!-- base layer: AFTER -->
           <img src="assets/bp-bottomsheet-after-v2.png" alt="After, bottom sheets unified to a single consistent pattern across Facebook surfaces" draggable="false" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
           <!-- top layer: BEFORE, clipped -->
@@ -132,7 +134,7 @@
           </div>
           <input type="range" min="0" max="100" step="0.1" value="{{ reveal }}" onInput="{{ onReveal }}" aria-label="Drag to compare before and after" style="position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:ew-resize;">
         </div>
-        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 0 0;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:22px 48px 0;">
           <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">A sample of the sprawl, mismatched titles, nav, spacing, and transitions on the left; one pattern on the right. The guidelines and framework I built gave teams a single bottom sheet to reach for, and later unblocked GenAI work that had stalled waiting on the guidance.</div>
           <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">Bottom sheet · drag before → after</div>
         </div>
@@ -142,7 +144,7 @@
           <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;"><span style="color: var(--text);">The org had 60+ patterns. I owned the one that was everywhere and documented nowhere</span>.</h2>
           <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">191 teams build on the system across Meta. I became the dedicated owner of one pattern inside it, bottom sheets, taking it from ad-hoc to standardized.</p>
         </div>
-      </div><div style="padding:52px 48px 52px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+      </div><div style="padding:52px 48px 52px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px; border-top:1px solid var(--border);">
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; padding-top:8px;">02 — The problem</div>
         <div>
           <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px;"><span style="color: var(--text);">Every team solved the same interaction differently</span>.</h2>
@@ -151,7 +153,7 @@
       </div>
 
       <!-- 02 problem -->
-      <div style="padding:52px 48px 52px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+      <div style="padding:52px 48px 52px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px; border-top:1px solid var(--border);">
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; padding-top:8px;">03 — The process</div>
         <div>
           
@@ -165,15 +167,15 @@
 
       <!-- 03 context -->
       
-      <div style="background:#0d1b2a;">
-        <img src="assets/bp-bottomsheet-layers.jpg" alt="A bottom sheet decomposed into its container layers, bottom sheet, screen overlay, product surface (Groups), and base" style="width:100%; height:auto; display:block;">
+      <div style="background:var(--surface-hi); border-top:1px solid var(--border);">
+        <img src="assets/bp-bottomsheet-layers-axon.png" alt="A bottom sheet decomposed into its container layers, bottom sheet, screen overlay, product surface (Groups), and base" style="width:100%; height:auto; display:block;">
         
       </div>
 
       <!-- container principles -->
-      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:26px 48px 52px;">
-          <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">A bottom sheet is a container stack, not a single screen: base, product surface, screen overlay, and the sheet itself. Naming those layers is what let one decision, when to use a sheet, apply consistently across every surface.</div>
-          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">Bottom sheet · container anatomy</div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 26px 48px 52px; background:var(--surface-hi); border-bottom:1px solid var(--border);">
+          <div style="font-size:15px; line-height:1.5; color:var(--muted3); max-width:760px;">A bottom sheet is a container stack, not a single screen: base, product surface, screen overlay, and the sheet itself. Naming those layers is what let one decision, when to use a sheet, apply consistently across every surface.</div>
+          <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--eyebrow); white-space:nowrap;">Bottom sheet · container anatomy</div>
         </div><div style="padding:52px 48px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
         <div style="border:1px solid var(--border); border-radius:16px; background:var(--surface-lo); padding:30px 30px 34px; display:flex; flex-direction:column; gap:12px;">
           <div style="font-size:13px; letter-spacing:.14em; color:#4a59c4;">01</div>
@@ -190,7 +192,77 @@
           <div style="font-size:19px; font-weight:600; line-height:1.3; color:var(--text);">Allow purposeful variation</div>
           <div style="font-size:15.5px; line-height:1.55; color:var(--muted3);">Adapt height and content only when the experience requires it.</div>
         </div>
-      </div><div style="background:#0d1b2a; color:#fff; padding:64px 48px 56px;">
+      </div>
+
+      <!-- the framework / modality spectrum -->
+      <div style="padding:52px 48px 20px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px; background:var(--surface-hi); border-top:1px solid var(--border);">
+        <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; padding-top:8px;">The framework</div>
+        <div>
+          <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.12; margin:0 0 22px; color:var(--text);">Teams were choosing containers by how they looked.</h2>
+          <div style="border-left:3px solid #4a59c4; padding-left:26px; margin:0 0 24px;">
+            <div style="font-family:'Instrument Serif',serif; font-size:30px; line-height:1.28; color:var(--text);">I decided to organize modalities by how much they <i style="color:#4a59c4;">interrupt</i> and how much they <i style="color:#4a59c4;">commit</i> the user, not by how they look, because a container is a decision about the user's job, not the designer's taste.</div>
+          </div>
+          <p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">Modality Unification gave the org three things it had never had in one place: a shared mental model, a decision tree, and the guidelines underneath it.</p>
+        </div>
+      </div>
+
+      <div style="padding:12px 48px 0; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; background:var(--surface-hi);">
+        <div style="border:1px solid var(--border); border-radius:16px; background:var(--surface-lo); overflow:hidden; display:flex; flex-direction:column;">
+          <div style="padding:18px 18px 0;">
+            <img src="assets/bp-modality-popover.png" alt="Popover modality: a small floating card layered over the surface behind it" style="display:block; width:100%; aspect-ratio:750/1000; object-fit:contain; object-position:center; border-radius:10px;">
+          </div>
+          <div style="padding:20px 22px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px;">
+            <div style="font-size:19px; font-weight:600; line-height:1.3; color:var(--text);">Popover</div>
+            <div style="font-size:15.5px; line-height:1.55; color:var(--muted3);">Glance and dismiss. The task survives without it.</div>
+          </div>
+        </div>
+        <div style="border:1px solid var(--border); border-radius:16px; background:var(--surface-lo); overflow:hidden; display:flex; flex-direction:column;">
+          <div style="padding:18px 18px 0;">
+            <img src="assets/bp-modality-bottomsheet.png" alt="Bottom sheet modality: a sheet anchored to the bottom edge with the product surface still visible above it" style="display:block; width:100%; aspect-ratio:750/1000; object-fit:contain; object-position:center; border-radius:10px;">
+          </div>
+          <div style="padding:20px 22px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px;">
+            <div style="font-size:19px; font-weight:600; line-height:1.3; color:var(--text);">Bottom sheet</div>
+            <div style="font-size:15.5px; line-height:1.55; color:var(--muted3);">A real task, with the surface behind it still in view.</div>
+          </div>
+        </div>
+        <div style="border:1px solid var(--border); border-radius:16px; background:var(--surface-lo); overflow:hidden; display:flex; flex-direction:column;">
+          <div style="padding:18px 18px 0;">
+            <img src="assets/bp-modality-dialog.png" alt="Dialog modality: a centered alert card over a dimmed surface" style="display:block; width:100%; aspect-ratio:750/1000; object-fit:contain; object-position:center; border-radius:10px;">
+          </div>
+          <div style="padding:20px 22px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px;">
+            <div style="font-size:19px; font-weight:600; line-height:1.3; color:var(--text);">Dialog</div>
+            <div style="font-size:15.5px; line-height:1.55; color:var(--muted3);">A decision that has to be made before anything else continues.</div>
+          </div>
+        </div>
+        <div style="border:1px solid var(--border); border-radius:16px; background:var(--surface-lo); overflow:hidden; display:flex; flex-direction:column;">
+          <div style="padding:18px 18px 0;">
+            <img src="assets/bp-modality-fullscreen.png" alt="Full screen modality: a full-height screen with its own navigation and tab bar" style="display:block; width:100%; aspect-ratio:750/1000; object-fit:contain; object-position:center; border-radius:10px;">
+          </div>
+          <div style="padding:20px 22px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px;">
+            <div style="font-size:19px; font-weight:600; line-height:1.3; color:var(--text);">Full screen</div>
+            <div style="font-size:15.5px; line-height:1.55; color:var(--muted3);">The task is the destination, not an interruption of one.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:22px 48px 0; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; align-items:center; background:var(--surface-hi);">
+        <div style="height:3px; border-radius:2px; background:linear-gradient(90deg, rgba(74,89,196,.18), rgba(74,89,196,.38));"></div>
+        <div style="height:3px; border-radius:2px; background:linear-gradient(90deg, rgba(74,89,196,.38), rgba(74,89,196,.58));"></div>
+        <div style="height:3px; border-radius:2px; background:linear-gradient(90deg, rgba(74,89,196,.58), rgba(74,89,196,.78));"></div>
+        <div style="height:3px; border-radius:2px; background:linear-gradient(90deg, rgba(74,89,196,.78), #4a59c4);"></div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:14px 48px 0; background:var(--surface-hi);">
+        <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--eyebrow); opacity:.7;">Less interruption, less commitment</div>
+        <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#8f9bd6;">More interruption, more commitment</div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:26px 48px 52px; background:var(--surface-hi); border-bottom:1px solid var(--border);">
+        <div style="font-size:15px; line-height:1.5; color:var(--muted3); max-width:760px;">Once modality is a spectrum, "which container" stops being a matter of preference and becomes a question with an answer. The decision tree built on top of it is the artifact that mattered most: it replaced feature-by-feature debate with a question any designer could answer without me in the room.</div>
+        <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--eyebrow); white-space:nowrap;">Modality unification · the spectrum</div>
+      </div>
+
+      <div style="background:#0d1b2a; color:#fff; padding:64px 48px 56px;">
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#5b6b7e; margin-bottom:14px;">04 — Spec it to the token</div>
         <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 24px; max-width:820px;">A pattern is more than a polished screen.</h2>
         
@@ -198,14 +270,14 @@
       </div><img src="assets/bp-people-picker-bs-anatomy.jpg" alt="The People Picker bottom sheet decomposed into its specced main components, navigation bar, search bar, contextual message, unit header, profile h-scroll, selection cell table, persistent CTA, and home affordance" style="width:100%; height:auto; display:block;">
 
       <!-- 04 process (dark) -->
-      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:26px 48px 52px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 26px 48px 52px; background-color: #0D1B2A">
           <div style="font-size:15px; line-height:1.5; color:#94a1b2; max-width:760px;">The People Picker bottom sheet, decomposed: each region maps to a reusable main component with its own redlines, tokens, and accessibility annotations. Document the pieces and the relationships once, and any team can assemble the whole correctly.</div>
           <div style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#5b6b7e; white-space:nowrap;">People picker · bottom-sheet anatomy</div>
         </div>
       
 
       <!-- spec (dark) -->
-      <div style="padding:56px 48px 56px;">
+      <div style="padding:56px 48px 56px; border-top:1px solid var(--border);">
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; margin-bottom:10px;">05 — See it in motion</div>
         <div style="display:flex; gap:64px; justify-content:center;">
           
@@ -230,13 +302,13 @@
           </div>
         </div>
         
-      </div><div style="padding:52px 48px 52px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+      </div><div style="padding: 52px 48px 52px; display: grid; grid-template-columns: 0.42fr 1fr; gap: 48px; background-color: #0D1B2A">
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; padding-top:8px;">06 — Drive adoption</div>
         <div>
           
           <p style="margin: 0"><span style="font-family: &quot;Instrument Serif&quot;, serif; font-size: 40px;">Publishing guidance didn't create adoption.</span></p><span style="font-family: &quot;Instrument Serif&quot;, serif; font-size: 40px; color: #4A59C4; display:inline-block; margin-bottom:22px;">Working alongside teams did.</span><p style="font-size:18px; line-height:1.62; color:var(--muted1); margin:0;">I became the bottom-sheet point of contact, reviewing work in 50+ cross-functional critiques and coaching 20+ designers through office hours. Real edge cases improved the system instead of becoming reasons to bypass it.</p>
         </div>
-      </div><div style="padding:52px 48px 64px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px;">
+      </div><div style="padding:52px 48px 64px; display:grid; grid-template-columns:0.42fr 1fr; gap:48px; border-bottom:1px solid var(--border);">
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; padding-top:8px;"><span style="letter-spacing: 1.82px;">07 — Prove the leverage</span></div>
         <div>
           
@@ -263,7 +335,7 @@
       </div><div style="background:#0d1b2a; color:#fff; padding:64px 48px; display:flex; align-items:center; justify-content:center; text-align:center;">
         <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:40px; line-height:1.15; margin:0; max-width:900px;">The standard didn't ship these.<br><i style="color:#7c8cff;">Teams did, on top of it.</i></h2>
       </div>
-      <div style="padding:64px 48px 64px;">
+      <div style="padding:64px 48px 64px; background:var(--surface-hi); border-bottom:1px solid var(--border);">
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#4a59c4; margin-bottom:26px;">08 — What teams shipped on it</div>
         <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
           <div style="border:1px solid var(--border); border-radius:16px; background:var(--surface-lo); overflow:hidden; display:flex; flex-direction:column;">
@@ -345,11 +417,11 @@
         <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#9aa2d8; margin-bottom:14px;">10 — The results</div>
         <h2 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:44px; line-height:1.1; margin:0 0 44px; color:#fff;">What shipped, and what stuck.</h2>
         <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:40px; border-top:1px solid rgba(255,255,255,.16); padding-top:40px; text-align:center;">
-          <div><div style="font-size:54px; font-weight:800; letter-spacing:-.02em;">82%+</div><div style="font-size:14px; color:#aab1de; margin-top:10px;">Bottom-sheet unification across platforms</div></div>
+          <div><div style="font-size:54px; font-weight:800; letter-spacing:-.02em;">82%</div><div style="font-size:14px; color:#aab1de; margin-top:10px;">Bottom-sheet unification across platforms</div></div>
           <div><div style="font-size:54px; font-weight:800; letter-spacing:-.02em;">70%</div><div style="font-size:14px; color:#aab1de; margin-top:10px;">Of all Blueprint pattern improvements in H1</div></div>
           <div><div style="font-size:54px; font-weight:800; letter-spacing:-.02em;">60+</div><div style="font-size:14px; color:#aab1de; margin-top:10px;">Patterns documented on Blueprint's internal reference site</div></div>
         </div>
-        <div style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap;">
+        <div style="margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center">
           <span style="border:1px solid rgba(255,255,255,.24); border-radius:100px; padding:9px 18px; font-size:14px; color:#dcdff2;">Bottom-sheet standard → org reference</span>
           
           <span style="border:1px solid rgba(255,255,255,.24); border-radius:100px; padding:9px 18px; font-size:14px; color:#dcdff2;">Meta AI's first transparency pattern, unblocked</span>

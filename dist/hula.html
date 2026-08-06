@@ -75,7 +75,7 @@
 <script src="transitions.js"></script>
 </helmet>
 
-<div class="theme-root" data-theme="{{ theme }}" style="min-height:100vh; background:var(--bg); font-family:'Hanken Grotesk',sans-serif; display:flex; justify-content:center; align-items:flex-start; padding:clamp(12px,2vw,28px);">
+<div class="theme-root" data-theme="dark" style="min-height:100vh; background:var(--bg); font-family:'Hanken Grotesk',sans-serif; display:flex; justify-content:center; align-items:flex-start; padding:clamp(12px,2vw,28px);">
     <div class="case-frame" style="width:100%; max-width:1180px; container-type:inline-size; background:var(--surface); border-radius:clamp(0px,1.6vw,28px); box-shadow:0 1px 3px rgba(0,0,0,.18); overflow:hidden; color:var(--text);">
 
       <!-- back bar -->
@@ -191,7 +191,7 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { theme: 'dark', menuOpen: false };
-  componentDidMount(){ try{ var t = localStorage.getItem('pn-theme-case'); if (t === 'light' || t === 'dark') this.setState({ theme: t }); }catch(e){} }
+  componentDidMount(){}
   renderVals(){ return { theme: this.state.theme, menuOpen: this.state.menuOpen, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }) }; }
 }
 </script>
