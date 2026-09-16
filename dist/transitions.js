@@ -1,5 +1,5 @@
 /* Paula Narvaez — page transition engine
-   - Home first-visit: full brand intro (flower opens, winks, name reveals, wipe up)
+   - Home first-visit: full brand intro (flower opens, winks, name reveals, curtain lifts up)
    - All other loads / revisits: quick flower veil
    - Link clicks: cover-wipe then navigate (seamless)
    - Honors prefers-reduced-motion
@@ -20,14 +20,14 @@
   try { internalNav = sessionStorage.getItem('pn-internal') === '1'; sessionStorage.removeItem('pn-internal'); } catch (e) {}
   var bigIntro = isHome && !internalNav && !reduce;
   var VEIL = '#17120d';
-  var HOME_BG = '#e2ddd2';
+  var HOME_BG = '#eae8e2';
   // each page's backdrop color, so dissolves bridge through the right tone
   function bgFor(path) {
     var p = '';
     try { p = decodeURIComponent(path || ''); } catch (e) { p = path || ''; }
     if (/Home\s*\(Index\)/i.test(p)) return '#17120d';
     if (/Three-Dot|Blueprint|Dolby|Nest/i.test(p)) return '#161310';
-    return '#e2ddd2';
+    return '#eae8e2';
   }
 
   // ---- veil-only CSS (content reveal is driven by inline styles, never CSS hide) ----
@@ -224,21 +224,20 @@
       if (isNarrow) { nm.style.marginTop = '22px'; } else { nm.style.marginLeft = '30px'; }
       nm.style.maxWidth = nm.scrollWidth + 'px';
     }, 1300);
-    setTimeout(function () { // fade the mark away
-      o.wrap.style.transition = 'opacity .5s ease,transform .6s ease';
-      o.wrap.style.opacity = '0';
-      o.wrap.style.transform = 'scale(0.96)';
-    }, 2950);
-    setTimeout(function () { // dark background morphs into the homepage color
-      v.style.transition = 'background-color .7s ease';
-      v.style.backgroundColor = HOME_BG;
-    }, 3100);
-    setTimeout(function () { // reveal page; veil (now page color) fades out seamlessly
+    setTimeout(function () { // page paints underneath, then the curtain lifts away
       revealContent();
-      v.style.transition = 'opacity .5s ease';
-      v.style.opacity = '0';
-      setTimeout(function () { if (v && v.parentNode) v.parentNode.removeChild(v); }, 520);
-    }, 3800);
+      v.style.willChange = 'transform';
+      // extend the panel below the fold so its curved hem starts off-screen
+      // hem = the bottom arc of one very large circle (true circular curve, crisp edge)
+      v.style.clipPath = 'circle(150vw at 50% calc(101vh - 150vw))';
+      // mark drifts down against the rising curtain — a touch of parallax depth
+      o.wrap.style.transition = 'transform 1.05s cubic-bezier(.62,0,.2,1),opacity .6s ease .3s';
+      o.wrap.style.transform = 'translateY(40px)';
+      o.wrap.style.opacity = '0';
+      v.style.transition = 'transform 1.05s cubic-bezier(.62,0,.2,1)';
+      requestAnimationFrame(function () { v.style.transform = 'translateY(-102%)'; });
+      setTimeout(function () { if (v && v.parentNode) v.parentNode.removeChild(v); }, 1120);
+    }, 2500);
   }
 
   function playQuick() {
