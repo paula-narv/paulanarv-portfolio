@@ -77,7 +77,7 @@
     // Home: cascade the work-index rows. Sub-pages: the veil wipe reveals the
     // already-rendered (opaque) page cleanly — no content fade, no flash.
     if (isHome) {
-      var rows = D.querySelectorAll('.idx-grid .brow');
+      var rows = D.querySelectorAll('.w-grid .w-card, .idx-grid .brow');
       for (var i = 0; i < rows.length; i++) animateIn(rows[i], i * 70);
     }
   }
@@ -194,7 +194,11 @@
   // ---------- ENTRANCE ----------
   function runEntrance() {
     var root = D.documentElement;
-    if (reduce) { root.classList.add('pn-none'); return; }
+    if (reduce) {
+      // Reduce Motion (common on phones): still greet with the mark, fade only, no movement
+      if (isHome && !internalNav) playCalm(); else root.classList.add('pn-none');
+      return;
+    }
     // failsafe — never leave the cover stuck
     setTimeout(function () { revealContent(); root.classList.add('pn-go', 'pn-none'); }, bigIntro ? 5200 : 2600);
     if (bigIntro) playBig(); else playQuick();
@@ -238,6 +242,31 @@
       requestAnimationFrame(function () { v.style.transform = 'translateY(-102%)'; });
       setTimeout(function () { if (v && v.parentNode) v.parentNode.removeChild(v); }, 1120);
     }, 2500);
+  }
+
+  function playCalm() {
+    var size = 196;
+    var o = makeVeil(size, true, false);
+    var v = o.v, f = o.f, nm = o.nm;
+    f.style.transform = 'none';
+    nm.style.fontSize = Math.round(isNarrow ? Math.min(size * 0.32, window.innerWidth * 0.078) : Math.min(size * 0.46, window.innerWidth * 0.12)) + 'px';
+    nm.style.maxWidth = 'none';
+    if (isNarrow) nm.style.marginTop = '22px'; else nm.style.marginLeft = '30px';
+    D.body.appendChild(o.v);
+    D.documentElement.classList.add('pn-none');
+    requestAnimationFrame(function () {
+      f.style.transition = 'opacity .6s ease';
+      nm.style.transition = 'opacity .6s ease .25s';
+      f.style.opacity = '1';
+      nm.style.opacity = '1';
+    });
+    setTimeout(function () { wink(v); }, 1000);
+    setTimeout(function () {
+      v.style.transition = 'opacity .6s ease';
+      v.style.opacity = '0';
+      setTimeout(function () { if (v.parentNode) v.parentNode.removeChild(v); }, 650);
+    }, 2000);
+    setTimeout(function () { D.documentElement.classList.add('pn-go', 'pn-none'); }, 2800);
   }
 
   function playQuick() {
